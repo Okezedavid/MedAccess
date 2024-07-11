@@ -69,7 +69,7 @@ export default function Home() {
             <h2 className="text-2xl font-bold mb-8">Feugiat lorem</h2>
             <figure>
               <blockquote className="text-lg italic mb-4">
-                "Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra magna etiam lorem ultricies in diam. Sed arcu cras consequat."
+                &quot;Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra magna etiam lorem ultricies in diam. Sed arcu cras consequat.&quot;
               </blockquote>
               <footer className="text-gray-600">
                 <cite className="author font-bold">Jane Anderson</cite>, <cite className="company">CEO, Untitled</cite>
@@ -131,7 +131,7 @@ export default function Home() {
       </footer>
 
       <div className="w-full text-center py-4 bg-blue-900 text-white">
-        <p>© 2024 David's Website. All rights Reserved</p>
+        <p>&copy; 2024 David's Website. All rights Reserved</p>
       </div>
     </div>
   );

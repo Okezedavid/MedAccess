@@ -218,7 +218,7 @@ export default function Home() {
           </ul>
         </div>
         <div className=" footer-part w-full text-left py-4 text-white relative top-16 px-8">
-          <p>2024 David's Website. All rights Reserved</p>
+          <p>2024 MedAccess Cooperation. All rights Reserved</p>
         </div>
       </footer>
     </div>

@@ -130,9 +130,9 @@ export default function Home() {
         </div>
       </footer>
 
-      <div className="w-full text-center py-4 bg-blue-900 text-white">
+      {/* <div className="w-full text-center py-4 bg-blue-900 text-white">
         <p>&copy; 2024 David's Website. All rights Reserved</p>
-      </div>
+      </div> */}
     </div>
   );
 }

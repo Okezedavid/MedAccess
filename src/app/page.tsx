@@ -38,15 +38,16 @@ export default function Home() {
             MedAccess
           </h1>
         </nav>
-        <nav className="right">
-          <button className="btn-animated bg-gray-100 text-blue-900 py-2 px-4 relative right-3 hover:text-gray-100">
-            Register
-          </button>
-        
-          <button className="btn-animated bg-gray-100 text-blue-900 py-2 px-4 hover:text-gray-100">
-            Log In
-          </button>
-        </nav>
+        <nav className="flex flex-col xs:flex-row items-center xs:items-end space-y-2 xs:space-y-0 xs:space-x-2">
+  <button className="text-xs md:text-sm btn-animated bg-gray-100 text-blue-900 py-2 px-4 relative right-3 hover:text-gray-100">
+    Register
+  </button>
+
+  <button className="text-xs md:text-sm btn-animated bg-gray-100 text-blue-900 py-2 px-4 hover:text-gray-100">
+    Log In
+  </button>
+</nav>
+
       </header>
 
       <main className="flex-grow flex flex-col items-center justify-between p-6 md:p-24">

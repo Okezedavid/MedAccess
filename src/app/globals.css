@@ -61,9 +61,8 @@ body {
   margin-top: -30px;
 }
 
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 400px) {
   .footer-part {
     font-size: 12px;
   }
-  
 }

@@ -1,10 +1,12 @@
-"use client"; 
+"use client";
+import Link from "next/link";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import pic1 from "../assets/imgs/pic1.jpg";
 import pic2 from "../assets/imgs/pic2.webp";
 import pic3 from "../assets/imgs/pic3.webp";
+import pic4 from "../assets/imgs/pic4.jpg";
 import logo from "../assets/imgs/capstone logo.jpg";
 import Image from "next/image";
 
@@ -12,7 +14,7 @@ export default function Home() {
   useEffect(() => {
     AOS.init({
       duration: 1000, // animation duration in milliseconds
-      easing: 'ease-in-out', // easing function for the animations
+      easing: "ease-in-out", // easing function for the animations
       once: true, // whether animation should happen only once - while scrolling down
     });
   }, []);
@@ -25,11 +27,23 @@ export default function Home() {
         data-aos="fade-down"
       >
         <nav className="left flex">
-          <Image className="rounded-2xl" src={logo} alt="logo" width={50} height={50} />
-          <h1 className="text-2xl font-bold relative top-4 font-mono">MedAccess</h1>
+          <Image
+            className="rounded-2xl"
+            src={logo}
+            alt="logo"
+            width={50}
+            height={50}
+          />
+          <h1 className="text-lg font-bold relative top-4 font-mono ">
+            MedAccess
+          </h1>
         </nav>
         <nav className="right">
-          <button className="bg-gray-100 text-blue-800 py-2 px-4 hover:bg-blue-700 hover:text-gray-100">
+          <button className="btn-animated bg-gray-100 text-blue-900 py-2 px-4 relative right-3 hover:text-gray-100">
+            Register
+          </button>
+        
+          <button className="btn-animated bg-gray-100 text-blue-900 py-2 px-4 hover:text-gray-100">
             Log In
           </button>
         </nav>
@@ -37,31 +51,29 @@ export default function Home() {
 
       <main className="flex-grow flex flex-col items-center justify-between p-6 md:p-24">
         {/* Banner */}
-        <section id="banner" className="w-full text-center py-16 bg-gray-100" data-aos="fade-up">
+        <section
+          id="banner"
+          className="w-full text-center py-16 bg-gray-100"
+          data-aos="fade-up"
+        >
           <div className="content">
             <h1 className="text-4xl font-bold mb-4">Ipsum sed lorem</h1>
             <p className="text-lg mb-6">
-              Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod
+              Morbi in sem quis dui placerat ornare. Pellentesque odio nisi,
+              euismod
               <br />
               sed arcu cras consequat lorem ipsum dolor sit amet.
             </p>
-            <ul className="actions">
-              <li>
-                <a
-                  href="#one"
-                  className="bg-blue-800 text-white py-2 px-4 rounded"
-                >
-                  Get Started
-                </a>
-              </li>
-            </ul>
           </div>
         </section>
 
         {/* One */}
         <section id="one" className="wrapper py-16" data-aos="fade-up">
           <div className="inner flex flex-col md:flex-row md:justify-between">
-            <div className="flex flex-col space-y-8 mb-8 md:mb-0 md:mr-8" data-aos="fade-right">
+            <div
+              className="flex flex-col space-y-8 mb-8 md:mb-0 md:mr-8"
+              data-aos="fade-right"
+            >
               <div>
                 <h3 className="text-xl font-bold">Magna ultricies</h3>
                 <p>
@@ -79,7 +91,10 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="flex-item image fit round mb-8 md:mb-0 md:mx-8" data-aos="fade-left">
+            <div
+              className="flex-item image fit round mb-8 md:mb-0 md:mx-8"
+              data-aos="fade-left"
+            >
               <Image
                 src={pic2}
                 alt="img"
@@ -88,7 +103,10 @@ export default function Home() {
                 className="rounded-full"
               />
             </div>
-            <div className="flex flex-col space-y-8 md:ml-8" data-aos="fade-right">
+            <div
+              className="flex flex-col space-y-8 md:ml-8"
+              data-aos="fade-right"
+            >
               <div>
                 <h3 className="text-xl font-bold">Tempus nullam</h3>
                 <p>
@@ -110,7 +128,11 @@ export default function Home() {
         </section>
 
         {/* Two */}
-        <section id="two" className="wrapper style1 special py-16 bg-gray-200" data-aos="fade-up">
+        <section
+          id="two"
+          className="wrapper style1 special py-16 bg-gray-200"
+          data-aos="fade-up"
+        >
           <div className="inner text-center">
             <h2 className="text-2xl font-bold mb-8">Feugiat lorem</h2>
             <figure>
@@ -130,7 +152,10 @@ export default function Home() {
         {/* Three */}
         <section id="three" className="wrapper py-16" data-aos="fade-up">
           <div className="inner flex flex-col md:flex-row md:justify-between">
-            <div className="flex-item box mb-8 md:mb-0 md:mr-8" data-aos="fade-right">
+            <div
+              className="flex-item box mb-8 md:mb-0 md:mr-8"
+              data-aos="fade-right"
+            >
               <div className="image fit mb-4">
                 <Image
                   src={pic1}
@@ -148,12 +173,15 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="flex-item box mb-8 md:mb-0 md:mx-8" data-aos="fade-left">
+            <div
+              className="flex-item box mb-8 md:mb-0 md:mx-8"
+              data-aos="fade-left"
+            >
               <div className="image fit mb-4">
                 <Image
                   src={pic3}
                   alt=""
-                  width={418}
+                  width={317}
                   height={200}
                   className="rounded"
                 />
@@ -169,9 +197,9 @@ export default function Home() {
             <div className="flex-item box md:ml-8" data-aos="fade-right">
               <div className="image fit mb-4">
                 <Image
-                  src={pic1}
+                  src={pic4}
                   alt=""
-                  width={418}
+                  width={316}
                   height={200}
                   className="rounded"
                 />
@@ -191,34 +219,59 @@ export default function Home() {
       {/* Footer */}
       <footer
         id="footer"
-        className="w-full py-16 bg-blue-800 text-white mt-auto" data-aos="fade-up"
+        className="w-full text-white mt-auto"
+        data-aos="fade-up"
       >
-        <div className="inner flex text-center md:block">
-          <h2 className="text-2xl font-bold mb-8">Get In Touch</h2>
-          <ul className="actions space-y-4">
-            <li>
-              <span className="icon fa-phone"></span>{" "}
-              <a href="tel:+2347042015200" className="hover:underline">
-                (+234) 70-420-1520-0
+        <div className="bg-zinc-950 w-full py-2">
+          <div className="inner flex flex-col items-center text-center md:block md:py-16 px-2 md:px-0">
+            <h2 className="text-2xl font-bold mb-8">Get In Touch</h2>
+            <ul className="actions space-y-4">
+              <li>
+                <a href="tel:+2347042015200" className="hover:underline">
+                  (+234) 70-420-1520-0
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:davidugochukwu080@gmail.com"
+                  className="hover:underline"
+                >
+                  davidugochukwu080@gmail.com
+                </a>
+              </li>
+              <li>Rukuba, behind graffiti guest inn.</li>
+            </ul>
+            <div className="social-icons flex space-x-4 mt-4 pl-10  justify-center">
+              <a href="#" className="text-gray-400 hover:text-gray-300 text-xl">
+                <span className="sr-only">Instagram</span>
+                <i className="fab fa-instagram"></i>
               </a>
-            </li>
-            <li>
-              <span className="icon fa-envelope"></span>{" "}
+              <a href="#" className="text-gray-400 hover:text-gray-300 text-xl">
+                <span className="sr-only">Facebook</span>
+                <i className="fab fa-facebook"></i>
+              </a>
+              <a
+                href="https://x.com/DavidOkeze"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-gray-300 text-xl"
+              >
+                <span className="sr-only">Twitter</span>
+                <i className="fab fa-twitter"></i>
+              </a>
               <a
                 href="mailto:davidugochukwu080@gmail.com"
-                className="hover:underline"
+                className="text-gray-400 hover:text-gray-300 text-xl"
               >
-                davidugochukwu080@gmail.com
+                <span className="sr-only">Email</span>
+                <i className="fas fa-envelope"></i>
               </a>
-            </li>
-            <li>
-              <span className="icon fa-map-marker"></span> Rukuba, behind
-              graffiti guest inn.
-            </li>
-          </ul>
-        </div>
-        <div className=" footer-part w-full text-left py-4 text-white relative top-16 px-8">
-          <p>2024 MedAccess Cooperation. All rights Reserved</p>
+            </div>
+          </div>
+          <hr className="w-11/12 mx-auto my-4 border-0 bg-gray-700 h-px" />
+          <div className="footer-part w-full text-center md:text-left py-6 text-sm text-white md:px-28 flex flex-col md:flex-row items-center md:justify-between">
+            <p>2024 MedAccess Cooperation. All rights Reserved</p>
+          </div>
         </div>
       </footer>
     </div>

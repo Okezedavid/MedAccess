@@ -28,7 +28,42 @@ body {
   }
 }
 
+.btn-animated {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn-animated::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background-color: #3b82f6; /* Tailwind blue-700 */
+  z-index: -1;
+  transition: all 0.4s ease-in-out;
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: 20%;
+}
+
+.btn-animated:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.btn-animated:hover {
+  color: #f3f4f6; /* Tailwind gray-100 */
+}
 .footer-part {
   position: relative;
+ 
   margin-top: -30px;
+}
+
+@media screen and (max-width: 380px) {
+  .footer-part {
+    font-size: 12px;
+  }
+  
 }

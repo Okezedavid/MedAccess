@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+// import { useRouter } from 'next/router';
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -13,14 +14,16 @@ import Image from "next/image";
 export default function Home() {
   useEffect(() => {
     AOS.init({
-      duration: 1000, // animation duration in milliseconds
-      easing: "ease-in-out", // easing function for the animations
-      once: true, // whether animation should happen only once - while scrolling down
+      duration: 1000,
+      easing: "ease-in-out",
+      once: true,
     });
   }, []);
 
+  
+
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen overflow-hidden">
       <header
         id="header"
         className="w-full flex justify-between items-center py-4 px-6 md:px-24 text-black"
@@ -38,16 +41,21 @@ export default function Home() {
             MedAccess
           </h1>
         </nav>
-        <nav className="flex flex-col xs:flex-row items-center xs:items-end space-y-2 xs:space-y-0 xs:space-x-2">
-  <button className="text-xs md:text-sm btn-animated bg-gray-100 text-blue-900 py-2 px-4 relative right-3 hover:text-gray-100">
-    Register
-  </button>
+        <div className="flex flex-col xs:flex-row items-center xs:items-end space-y-2 xs:space-y-0 xs:space-x-2">
+          <Link href="/signup">
+            {" "}
+            <button className="text-xs md:text-sm btn-animated bg-gray-100 text-blue-900 py-2 px-4 relative right-3 hover:text-gray-100">
+              Register
+            </button>
+          </Link>
 
-  <button className="text-xs md:text-sm btn-animated bg-gray-100 text-blue-900 py-2 px-4 hover:text-gray-100">
-    Log In
-  </button>
-</nav>
-
+          <Link href="/signin">
+            {" "}
+            <button className="text-xs md:text-sm btn-animated bg-gray-100 text-blue-900 py-2 px-4 hover:text-gray-100">
+              Log In
+            </button>
+          </Link>
+        </div>
       </header>
 
       <main className="flex-grow flex flex-col items-center justify-between p-6 md:p-24">
@@ -216,65 +224,120 @@ export default function Home() {
           </div>
         </section>
       </main>
+{/* Footer */}
+<footer
+  id="footer"
+  className="w-full text-white mt-auto bg-zinc-950"
+  data-aos="fade-up"
+>
+  <div className="container mx-auto py-8 px-4 md:px-0">
+    <div className="flex flex-wrap justify-center md:justify-between">
+      {/* Contact Info */}
+      <div className="w-full md:w-1/4 mb-8 md:mb-0">
+        <h2 className="text-2xl font-bold mb-4">Get In Touch</h2>
+        <ul className="space-y-2">
+          <li className="flex items-center">
+            <i className="fas fa-phone-alt text-gray-400 mr-2"></i>
+            <a href="tel:+2347042015200" className="hover:underline">
+              (+234) 70-420-1520-0
+            </a>
+          </li>
+          <li className="flex items-center">
+            <i className="fas fa-map-marker-alt text-gray-400 mr-2"></i>
+            <span>127 Glover Court, Ikoyi, Lagos, Nigeria</span>
+          </li>
+          <li className="flex items-center">
+            <i className="fas fa-envelope text-gray-400 mr-2"></i>
+            <a
+              href="mailto:medaccessorg06@gmail.com"
+              className="hover:underline"
+            >
+              medaccessorg06@gmail.com
+            </a>
+          </li>
+        </ul>
+      </div>
 
-      {/* Footer */}
-      <footer
-        id="footer"
-        className="w-full text-white mt-auto"
-        data-aos="fade-up"
-      >
-        <div className="bg-zinc-950 w-full py-2">
-          <div className="inner flex flex-col items-center text-center md:block md:py-16 px-2 md:px-0">
-            <h2 className="text-2xl font-bold mb-8">Get In Touch</h2>
-            <ul className="actions space-y-4">
-              <li>
-                <a href="tel:+2347042015200" className="hover:underline">
-                  (+234) 70-420-1520-0
-                </a>
-              </li>
-              <li>
-                <a
-                  href="mailto:davidugochukwu080@gmail.com"
-                  className="hover:underline"
-                >
-                  davidugochukwu080@gmail.com
-                </a>
-              </li>
-              <li>Rukuba, behind graffiti guest inn.</li>
-            </ul>
-            <div className="social-icons flex space-x-4 mt-4 pl-10  justify-center">
-              <a href="#" className="text-gray-400 hover:text-gray-300 text-xl">
-                <span className="sr-only">Instagram</span>
-                <i className="fab fa-instagram"></i>
-              </a>
-              <a href="#" className="text-gray-400 hover:text-gray-300 text-xl">
-                <span className="sr-only">Facebook</span>
-                <i className="fab fa-facebook"></i>
-              </a>
-              <a
-                href="https://x.com/DavidOkeze"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-gray-300 text-xl"
-              >
-                <span className="sr-only">Twitter</span>
-                <i className="fab fa-twitter"></i>
-              </a>
-              <a
-                href="mailto:davidugochukwu080@gmail.com"
-                className="text-gray-400 hover:text-gray-300 text-xl"
-              >
-                <span className="sr-only">Email</span>
-                <i className="fas fa-envelope"></i>
-              </a>
-            </div>
-          </div>
-          <hr className="w-11/12 mx-auto my-4 border-0 bg-gray-700 h-px" />
-          <div className="footer-part w-full text-center md:text-left py-6 text-sm text-white md:px-28 flex flex-col md:flex-row items-center md:justify-between">
-            <p>2024 MedAccess Cooperation. All rights Reserved</p>
+      {/* Social Icons */}
+      <div className="w-full md:w-1/4 mb-8 md:mb-0">
+        <div className="flex justify-center md:justify-start">
+          <h2 className="text-xl font-bold mb-4">Follow Us</h2>
+          <div className="social-icons flex space-x-4  relative right-24 -bottom-10">
+            <a
+              href="#"
+              className="text-gray-400 hover:text-gray-300 text-xl"
+            >
+              <span className="sr-only">Instagram</span>
+              <i className="fab fa-instagram"></i>
+            </a>
+            <a
+              href="#"
+              className="text-gray-400 hover:text-gray-300 text-xl"
+            >
+              <span className="sr-only">Facebook</span>
+              <i className="fab fa-facebook"></i>
+            </a>
+            <a
+              href=""
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-gray-300 text-xl"
+            >
+              <span className="sr-only">Twitter</span>
+              <i className="fab fa-twitter"></i>
+            </a>
+            <a
+              href="mailto:medaccessorg06@gmail.com"
+              className="text-gray-400 hover:text-gray-300 text-xl"
+            >
+              <span className="sr-only">Email</span>
+              <i className="fas fa-envelope"></i>
+            </a>
           </div>
         </div>
-      </footer>
+      </div>
+
+      {/* Account Links */}
+      <div className="w-full md:w-1/4 mb-8 md:mb-0">
+        <h2 className="text-xl font-bold mb-4">Account</h2>
+        <ul className="space-y-2">
+          <li>
+            <a href="#" className="hover:underline">My Account</a>
+          </li>
+          <li>
+            <a href="#" className="hover:underline">Login/Register</a>
+          </li>
+        </ul>
+      </div>
+
+      {/* Resources Links */}
+      <div className="w-full md:w-1/4 mb-8 md:mb-0">
+        <h2 className="text-xl font-bold mb-4">Resources</h2>
+        <ul className="space-y-2">
+          <li>
+            <a href="#" className="hover:underline">Terms Of Service</a>
+          </li>
+          <li>
+            <a href="#" className="hover:underline">Give Feedback</a>
+          </li>
+          <li>
+            <a href="#" className="hover:underline">FAQs</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    {/* Divider */}
+    <hr className="my-6 border-gray-700" />
+
+    {/* Copyright */}
+    <div className="text-center md:text-left text-sm">
+      <p>&copy; 2024 MedAccess Cooperation. All rights Reserved</p>
+    </div>
+  </div>
+</footer>
+
+
     </div>
   );
 }

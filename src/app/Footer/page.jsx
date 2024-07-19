@@ -37,7 +37,7 @@ export default function Footer () {
 
       {/* Social Icons */}
       <div className="w-full md:w-1/4 mb-8 md:mb-0">
-        <div className="flex justify-center md:justify-start p-6">
+        <div className="flex justify-center md:justify-start relative -right-20">
           <h2 className="text-xl font-bold mb-4">Follow Us</h2>
           <div className="social-icons flex space-x-4  relative right-24 -bottom-10">
             <a
@@ -75,7 +75,7 @@ export default function Footer () {
       </div>
 
       {/* Account Links */}
-      <div className="w-full md:w-1/4 mb-8 md:mb-0">
+      <div className="w-full md:w-1/4 mb-8 relative -right-8 md:mb-0">
         <h2 className="text-xl font-bold mb-4">Account</h2>
         <ul className="space-y-2">
           <li>
@@ -88,7 +88,7 @@ export default function Footer () {
       </div>
 
       {/* Resources Links */}
-      <div className="w-full md:w-1/4 mb-8 md:mb-0">
+      <div className="w-full md:w-1/4 mb-8 relative -right-8 md:mb-0">
         <h2 className="text-xl font-bold mb-4">Resources</h2>
         <ul className="space-y-2">
           <li>

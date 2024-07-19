@@ -43,17 +43,18 @@ export default function Home() {
           </h1>
         </nav>
         <div className="flex flex-col xs:flex-row items-center xs:items-end space-y-2 xs:space-y-0 xs:space-x-2">
-          <Link href="/signup">
-            {" "}
-            <button className="text-xs md:text-sm btn-animated bg-gray-100 text-blue-900 py-2 px-4 relative right-3 hover:text-gray-100">
-              Register
-            </button>
-          </Link>
 
           <Link href="/signin">
             {" "}
-            <button className="text-xs md:text-sm btn-animated bg-gray-100 text-blue-900 py-2 px-4 hover:text-gray-100">
+            <button className="text-xs md:text-sm   text-blue-900 py-2 px-4 ">
               Log In
+            </button>
+          </Link>
+
+          <Link href="/signup">
+            {" "}
+            <button className="text-xs md:text-sm btn-animated bg-gray-100 text-blue-900 py-2 px-4 relative  hover:text-gray-100">
+              Register
             </button>
           </Link>
         </div>
@@ -140,7 +141,7 @@ export default function Home() {
         {/* Two */}
         <section
           id="two"
-          className="wrapper style1 special py-16 bg-gray-200"
+          className="wrapper style1 special py-16 bg-gray-200 px-16"
           data-aos="fade-up"
         >
           <div className="inner text-center">

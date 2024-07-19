@@ -1,12 +1,73 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState,FormEvent } from "react";
+import { useRouter } from "next/navigation";
+import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
+import {auth} from "@/firebase/firebase"
 import { FaEye, FaEyeSlash, FaGoogle, FaFacebook } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
-import logo from "../../assets/imgs/capstone logo.jpg";
 import illustration from "../../assets/imgs/illustration.svg.svg";
 
 export default function Signup() {
+  // FOR THE AUTHENTICATION
+const [firstName, setFirstName] = useState("");
+const [lastName, setLastName] = useState("");
+const [gender, setGender] = useState("");
+const [email, setEmail] = useState("");
+const [password, setPassword] = useState("");
+const [confirmPassword, setConfirmPassword] = useState("");
+const [error, setError] = useState<string | null>(null);
+const [message, setMessage] = useState<string | null>(null);
+const router = useRouter();
+
+const handleRegister = async (event: FormEvent) => { 
+  event.preventDefault();
+  setError(null);
+  setMessage(null);
+
+  if (password !== confirmPassword) {
+    setError("Passwords do not match");
+    return;
+  }
+
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+
+    await sendEmailVerification(user);
+
+    
+
+    // TEMPORARY STORE THE DATA IN LOCAL STORAGE
+    localStorage.setItem(
+      "registration data",
+      JSON.stringify({
+        firstName,
+        lastName,
+        gender,
+        email,
+      })
+     );
+
+    setMessage("User registered successfully. Please verify your email address and proceed to login");
+
+    // CLEAR FORM FIELDS
+    setFirstName("");
+    setLastName("");
+    setGender("");
+    setEmail("");
+    setPassword("");
+    setConfirmPassword("");
+  } catch (error) { 
+    if (error instanceof Error) {
+      setError(error.message);
+  } else {
+    setError("An error occurred. Please try again.");
+  }
+}
+};
+
+// FOR EYE ICON ON PASSWORD FIELDS
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -32,7 +93,7 @@ export default function Signup() {
             Kickstart Healthy Living
           </p>
          
-          <form className="space-y-4">
+          <form onSubmit={handleRegister} className="space-y-4">
             <div className="space-y-4 md:space-y-0 md:flex md:space-x-4">
               <div className="w-full">
                 <label
@@ -44,12 +105,15 @@ export default function Signup() {
                 <input
                   placeholder="Enter firstname"
                   type="text"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
                   name="firstName"
                   id="firstName"
                   required
                   className="w-full p-2 border border-gray-300 rounded-xl placeholder:font-serif focus:outline-none focus:ring-2 focus:ring-blue-400"
                 />
               </div>
+
               <div className="w-full">
                 <label
                   htmlFor="lastName"
@@ -61,6 +125,8 @@ export default function Signup() {
                   placeholder="Enter lastname"
                   type="text"
                   name="lastName"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
                   id="lastName"
                   required
                   className="w-full p-2 border border-gray-300 rounded-xl placeholder:font-serif focus:outline-none focus:ring-2 focus:ring-blue-400"
@@ -79,6 +145,8 @@ export default function Signup() {
                 type="email"
                 name="email"
                 id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
                 className="w-full p-2 border border-gray-300 rounded-xl placeholder:font-serif focus:outline-none focus:ring-2 focus:ring-blue-400"
               />
@@ -94,9 +162,11 @@ export default function Signup() {
                 name="gender"
                 id="gender"
                 required
+                value={gender}
+                onChange={(e) => setGender(e.target.value)}
                 className="w-full p-3 bg-white border border-gray-300 rounded-xl text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
               >
-                <option value="" >Select</option>
+                <option value="" >Select Gender</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
               </select>
@@ -112,6 +182,8 @@ export default function Signup() {
                 <input
                   placeholder="Enter Password"
                   type={showPassword ? "text" : "password"}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   name="password"
                   id="password"
                   required
@@ -134,6 +206,8 @@ export default function Signup() {
                 <input
                   placeholder="Confirm Password"
                   type={showConfirmPassword ? "text" : "password"}
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
                   name="confirmPassword"
                   id="confirmPassword"
                   required
@@ -147,6 +221,8 @@ export default function Signup() {
                 </div>
               </div>
             </div>
+            {error && <p className="text-red-500 text-sm">{error}</p>}
+            {message && <p className="text-green-500 text-sm">{message}</p>}
             <button
               type="submit"
               className="w-full font-medium bg-blue-500 text-white p-3 mt-6 rounded-2xl hover:bg-blue-600 transition duration-300"

@@ -1,12 +1,62 @@
 "use client";
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import {
+  reauthenticateWithCredential,
+  EmailAuthProvider,
+  updatePassword,
+} from "firebase/auth";
+import { auth } from "@/firebase/firebase";
+
 import Link from "next/link";
 import Image from "next/image";
-import logo from "../../assets/imgs/capstone logo.jpg";
+
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import sent from "../../assets/imgs/sent.svg";
 
 export default function ResetPassword() {
+  // FOR THE RESET PASSWORD FORM  
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmNewPassword, setConfirmNewPassword] = useState("");
+  const [error, setError] = useState<string | null>("");
+  const [message, setMessage] = useState<string | null>("");
+  const router = useRouter();
+
+  const handlePasswordChange = async (event: React.FormEvent) => {
+    event.preventDefault();
+    setError(null);
+    setMessage(null);
+
+    if (newPassword !== confirmNewPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+
+    try {
+      const user = auth.currentUser;
+      if (user && user.email) {
+        const credential = EmailAuthProvider.credential(
+          user.email,
+          currentPassword
+        );
+        await reauthenticateWithCredential(user, credential);
+        await updatePassword(user, newPassword);
+        setMessage("Password updated successfully");
+        setCurrentPassword("");
+        setNewPassword("");
+      } else {
+        setError("User not found");
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        setError(error.message);
+      } else {
+        setError("An error occurred. Please try again.");
+      }
+    }
+  };
+
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
@@ -22,7 +72,7 @@ export default function ResetPassword() {
 
       {/* Right half - form */}
       <div className="flex flex-col items-center justify-center w-full md:w-1/2 p-8">
-        <form className="mt-8 p-8 bg-white rounded-lg max-w-md w-full">
+        <form onChange={handlePasswordChange} className="mt-8 p-8 bg-white rounded-lg max-w-md w-full">
           <h1 className="text-3xl font-bold mb-6 text-gray-900 text-center md:text-left relative -top-6">
             Reset Password
           </h1>

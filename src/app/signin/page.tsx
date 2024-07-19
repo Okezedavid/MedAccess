@@ -1,12 +1,62 @@
 "use client";
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth, firestore } from "@/firebase/firebase";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 import { FaEye, FaEyeSlash, FaGoogle, FaFacebook } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
-import logo from "../../assets/imgs/capstone logo.jpg";
 import login from "../../assets/imgs/login.svg";
 
 export default function SignIn() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState<string | null>(""); // Updated type definition
+  const router = useRouter();
+
+  const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setError(null); // Updated to set null
+
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      if (user.emailVerified) {
+        // Retrieve user data from storage
+        const registrationData = localStorage.getItem("registrationData");
+        const {
+          firstName = "",
+          lastName = "",
+          gender = "",
+        } = registrationData ? JSON.parse(registrationData) : {};
+
+        // Check if user is already registered
+        const userDoc = await getDoc(doc(firestore, "users", user.uid));
+        if (!userDoc.exists()) {
+          // Save user data to Firestore
+          await setDoc(doc(firestore, "users", user.uid), {
+            firstName,
+            lastName,
+            gender,
+            email: user.email,
+          });
+        }
+        router.push("/Dashboard");
+      } else {
+        setError("Please verify your email address");
+      }
+    } catch (error: any) {
+      console.error("Login Error:", error);
+      if (error instanceof Error) {
+        setError(error.message);
+      } else {
+        setError("An error occurred. Please try again.");
+      }
+    }
+  };
+
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
@@ -22,8 +72,7 @@ export default function SignIn() {
       {/* Form container */}
       <div className="w-full md:w-1/2 p-8">
         <div className="max-w-md mx-auto">
-         
-          <form className="space-y-4">
+          <form onSubmit={handleLogin} className="space-y-4">
             <h1 className="text-2xl font-bold mb-6 text-gray-900 relative -right-16 font-mono">
               Welcome Back
             </h1>
@@ -38,6 +87,8 @@ export default function SignIn() {
                 placeholder="Enter Email"
                 type="email"
                 name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 id="email"
                 required
                 className="w-full p-2 border border-gray-300 rounded-xl placeholder:font-serif focus:outline-none focus:ring-2 focus:ring-blue-400"
@@ -55,6 +106,8 @@ export default function SignIn() {
                 type={showPassword ? "text" : "password"}
                 name="password"
                 id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 required
                 className="w-full p-2 border border-gray-300 rounded-xl placeholder:font-serif focus:outline-none focus:ring-2 focus:ring-blue-400"
               />
@@ -71,6 +124,7 @@ export default function SignIn() {
             >
               Log In
             </button>
+            {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
             <div className="mt-4 text-center">
               <p className="text-gray-700 text-sm md:text-base">
                 Forgot your password?{" "}

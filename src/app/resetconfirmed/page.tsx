@@ -1,16 +1,13 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import logo from "../../assets/imgs/capstone logo.jpg";
+
 import check from "../../assets/imgs/check.png";
-import sent from "../../assets/imgs/sent.svg"
+
 export default function ResetConfirmed() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-white">
-      <div className="flex justify-center py-8">
-        <Image src={logo} alt="Logo" width={70} height={70} />
-      </div>
-      <div className="py-8">
+      <div className="p-16">
         <Image src={check} alt="mail" width={130} />
       </div>
       <div className="flex flex-col items-center justify-center md:items-start md:justify-start md:min-h-screen md:flex-row">

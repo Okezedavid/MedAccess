@@ -68,33 +68,34 @@ export default function Home() {
           data-aos="fade-up"
         >
           <div className="content">
-            <h1 className="text-4xl font-bold mb-4">Find Hospitals Near You Easily</h1>
-            <p className="text-lg mb-6">
-              Morbi in sem quis dui placerat ornare. Pellentesque odio nisi,
-              euismod
+            <h1 className="text-3xl font-bold mb-4">Welcome to MedAccess
+            </h1>
+            <p className="text-sm mb-6 md:text-lg font-serif">
+            Here, we shape the healthcare for millions worldwide.
               <br />
-              sed arcu cras consequat lorem ipsum dolor sit amet.
+              <br />
+              Carefinder is a platform where users can search for hosiptals in their areas, export hospital details for your records and enhance your healthcare experience by connecting with others and sharing valuable resources.
             </p>
           </div>
         </section>
 
         {/* One */}
-        <section id="one" className="wrapper py-16" data-aos="fade-up">
+        <section id="one" className="wrapper py-16 font-serif"  data-aos="fade-up">
           <div className="inner flex flex-col md:flex-row md:justify-between">
             <div
               className="flex flex-col space-y-8 mb-8 md:mb-0 md:mr-8"
               data-aos="fade-right"
             >
               <div>
-                <h3 className="text-xl font-bold">Magna ultricies</h3>
+                <h3 className="text-xl font-bold">Find the nearest hospital to you and make an appointment.</h3>
                 <p>
-                  Morbi in sem quis dui plalorem ipsum
+                Discover Your Perfect Care: Find Your Hospital, Anytime, Anywhere!
                   <br />
                   euismod in, pharetra sed ultricies.
                 </p>
               </div>
               <div>
-                <h3 className="text-xl font-bold">Ipsum adipiscing lorem</h3>
+                <h3 className="text-xl font-bold">Make a lasting impact on the future of your health</h3>
                 <p>
                   Tristique yonve cursus jam nulla quam
                   <br />
@@ -145,7 +146,7 @@ export default function Home() {
           data-aos="fade-up"
         >
           <div className="inner text-center">
-            <h2 className="text-2xl font-bold mb-8">Feugiat lorem</h2>
+            <h2 className="text-2xl font-bold mb-8">Who are we?</h2>
             <figure>
               <blockquote className="text-lg italic mb-4">
                 &quot;Morbi in sem quis dui placerat ornare. Pellentesque odio

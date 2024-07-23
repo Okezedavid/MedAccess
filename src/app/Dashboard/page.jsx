@@ -42,7 +42,9 @@ export default function Dashboard() {
             manage your subscription, view your order history and more.
             </p>
 
-        <Footer />
+   <div>
+    <button>Sign out</button>
+   </div>
     </div>
   )
 }

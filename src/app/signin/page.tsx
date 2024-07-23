@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth, firestore } from "@/firebase/firebase";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { FaEye, FaEyeSlash, FaGoogle, FaFacebook } from "react-icons/fa";
@@ -10,21 +10,22 @@ import Image from "next/image";
 import login from "../../assets/imgs/login.svg";
 
 export default function SignIn() {
+
+  // FOR THE EMAIL AND PASSWORD AUTHENTICATION
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState<string | null>(""); // Updated type definition
+  const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
   const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setError(null); // Updated to set null
+    setError(null);
 
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
       if (user.emailVerified) {
-        // Retrieve user data from storage
         const registrationData = localStorage.getItem("registrationData");
         const {
           firstName = "",
@@ -32,10 +33,8 @@ export default function SignIn() {
           gender = "",
         } = registrationData ? JSON.parse(registrationData) : {};
 
-        // Check if user is already registered
         const userDoc = await getDoc(doc(firestore, "users", user.uid));
         if (!userDoc.exists()) {
-          // Save user data to Firestore
           await setDoc(doc(firestore, "users", user.uid), {
             firstName,
             lastName,
@@ -49,6 +48,35 @@ export default function SignIn() {
       }
     } catch (error: any) {
       console.error("Login Error:", error);
+      if (error instanceof Error) {
+        setError(error.message);
+      } else {
+        setError("An error occurred. Please try again.");
+      }
+    }
+  };
+
+  // FOR THE GOOGLE AUTHENTICATION
+
+  const handleGoogleSignIn = async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+
+      if (user) {
+        const userDoc = await getDoc(doc(firestore, "users", user.uid));
+        if (!userDoc.exists()) {
+          await setDoc(doc(firestore, "users", user.uid), {
+            firstName: user.displayName?.split(' ')[0] || '',
+            lastName: user.displayName?.split(' ')[1] || '',
+            email: user.email,
+          });
+        }
+        router.push("/Dashboard");
+      }
+    } catch (error: any) {
+      console.error("Google Sign-In Error:", error);
       if (error instanceof Error) {
         setError(error.message);
       } else {
@@ -138,7 +166,10 @@ export default function SignIn() {
             </div>
           </form>
           <div className="mt-6 flex flex-col space-y-4">
-            <button className="w-full flex items-center justify-center p-3 border border-gray-300 rounded-2xl hover:bg-gray-100 transition duration-300">
+            <button
+              onClick={handleGoogleSignIn}
+              className="w-full flex items-center justify-center p-3 border border-gray-300 rounded-2xl hover:bg-gray-100 transition duration-300"
+            >
               <FaGoogle className="mr-2 text-red-500" /> Sign in with Google
             </button>
             <button className="w-full flex items-center justify-center p-3 border border-gray-300 rounded-2xl hover:bg-gray-100 transition duration-300">

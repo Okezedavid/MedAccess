@@ -9,7 +9,7 @@ import pic1 from "../assets/imgs/pic1.jpg";
 import pic2 from "../assets/imgs/pic2.webp";
 import pic3 from "../assets/imgs/pic3.webp";
 import pic4 from "../assets/imgs/pic4.jpg";
-import logo from "../assets/imgs/capstone logo.jpg";
+import logo from "../assets/imgs/logo.jpg";
 import Image from "next/image";
 
 export default function Home() {
@@ -30,13 +30,13 @@ export default function Home() {
         className="w-full flex justify-between items-center py-4 px-6 md:px-24 text-black"
         data-aos="fade-down"
       >
-        <nav className="left flex">
+        <nav className="left flex relative -left-10">
           <Image
-            className="rounded-2xl"
+            className="rounded-2xl relative -right-4"
             src={logo}
             alt="logo"
-            width={50}
-            height={50}
+            width={80}
+            height={80}
           />
           <h1 className="text-lg font-bold relative top-4 font-mono ">
             MedAccess
@@ -67,14 +67,14 @@ export default function Home() {
           className="w-full text-center py-16 bg-gray-100"
           data-aos="fade-up"
         >
-          <div className="content">
+          <div className="content p-6">
             <h1 className="text-3xl font-bold mb-4">Welcome to MedAccess
             </h1>
             <p className="text-sm mb-6 md:text-lg font-serif">
             Here, we shape the healthcare for millions worldwide.
               <br />
               <br />
-              Carefinder is a platform where users can search for hosiptals in their areas, export hospital details for your records and enhance your healthcare experience by connecting with others and sharing valuable resources.
+             MedAccess is a platform where users can search for hosiptals in their areas, export hospital details for your records and enhance your healthcare experience by connecting with others and sharing valuable resources.
             </p>
           </div>
         </section>

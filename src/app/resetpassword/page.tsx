@@ -70,7 +70,8 @@ export default function ResetPassword() {
           {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
           {message && <p className="text-green-500 text-sm mt-2">{message}</p>}
           <div className="mt-6">
-           <button
+        
+         <button
               type="submit"
               className="w-full bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 transition duration-300"
             >

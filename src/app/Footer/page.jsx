@@ -15,19 +15,19 @@ export default function Footer () {
         <ul className="space-y-2">
           <li className="flex items-center">
             <i className="fas fa-phone-alt text-gray-400 mr-2"></i>
-            <a href="tel:+2347042015200" className="hover:underline">
+            <a href="tel:+2347042015200" className="hover:underline md:text-base text-sm ">
               (+234) 70-420-1520-0
             </a>
           </li>
           <li className="flex items-center">
             <i className="fas fa-map-marker-alt text-gray-400 mr-2"></i>
-            <span>127 Glover Court, Ikoyi, Lagos, Nigeria</span>
+            <span className="md:text-base text-sm">127 Glover Court, Ikoyi, Lagos, Nigeria</span>
           </li>
           <li className="flex items-center">
             <i className="fas fa-envelope text-gray-400 mr-2"></i>
             <a
               href="mailto:medaccessorg06@gmail.com"
-              className="hover:underline"
+              className="hover:underline md:text-base text-sm"
             >
               medaccessorg06@gmail.com
             </a>
@@ -37,7 +37,7 @@ export default function Footer () {
 
       {/* Social Icons */}
       <div className="w-full md:w-1/4 mb-8 md:mb-0">
-        <div className="flex justify-center md:justify-start relative -right-20">
+        <div className="flex justify-center md:justify-start relative -right-20 ">
           <h2 className="text-xl font-bold mb-4">Follow Us</h2>
           <div className="social-icons flex space-x-4  relative right-24 -bottom-10">
             <a
@@ -45,14 +45,14 @@ export default function Footer () {
               className="text-gray-400 hover:text-gray-300 text-xl"
             >
               <span className="sr-only">Instagram</span>
-              <i className="fab fa-instagram"></i>
+              <i className="fab fa-instagram md:text-lg text-base"></i>
             </a>
             <a
               href="#"
               className="text-gray-400 hover:text-gray-300 text-xl"
             >
               <span className="sr-only">Facebook</span>
-              <i className="fab fa-facebook"></i>
+              <i className="fab fa-facebook md:text-lg text-base"></i>
             </a>
             <a
               href=""
@@ -61,14 +61,14 @@ export default function Footer () {
               className="text-gray-400 hover:text-gray-300 text-xl"
             >
               <span className="sr-only">Twitter</span>
-              <i className="fab fa-twitter"></i>
+              <i className="fab fa-twitter md:text-lg text-base"></i>
             </a>
             <a
               href="mailto:medaccessorg06@gmail.com"
               className="text-gray-400 hover:text-gray-300 text-xl"
             >
               <span className="sr-only">Email</span>
-              <i className="fas fa-envelope"></i>
+              <i className="fas fa-envelope md:text-lg text-base"></i>
             </a>
           </div>
         </div>
@@ -79,10 +79,10 @@ export default function Footer () {
         <h2 className="text-xl font-bold mb-4">Account</h2>
         <ul className="space-y-2">
           <li>
-            <a href="#" className="hover:underline">My Account</a>
+            <p className="hover:underline md:text-base text-sm">My Account</p>
           </li>
           <li>
-            <a href="#" className="hover:underline">Login/Register</a>
+            <p className="hover:underline md:text-base text-sm">Login/Register</p>
           </li>
         </ul>
       </div>
@@ -92,13 +92,13 @@ export default function Footer () {
         <h2 className="text-xl font-bold mb-4">Resources</h2>
         <ul className="space-y-2">
           <li>
-            <a href="#" className="hover:underline">Terms Of Service</a>
+            <p className="hover:underline md:text-base text-sm">Terms Of Service</p>
           </li>
           <li>
-            <a href="#" className="hover:underline">Give Feedback</a>
+            <p className="hover:underline md:text-base text-sm">Give Feedback</p>
           </li>
           <li>
-            <a href="#" className="hover:underline">FAQs</a>
+            <p className="hover:underline md:text-base text-sm">FAQs</p>
           </li>
         </ul>
       </div>

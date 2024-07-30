@@ -28,9 +28,9 @@ const Dashboard = () => {
   return (
     <div className="flex">
       <div
-        className={`h-screen bg-blue-100 text-white flex flex-col fixed ${
+        className={`h-screen bg-blue-100 text-white flex flex-col fixed top-0 left-0 ${
           isCollapsed ? "w-16 sm:w-20" : "w-48 sm:w-64"
-        } transition-all duration-300`}
+        } transition-all duration-300 z-40`}
       >
         <div className="flex items-center justify-between h-16 sm:h-20 border-b border-gray-700 px-2 sm:px-4">
           <Image
@@ -98,9 +98,9 @@ const Dashboard = () => {
           </ul>
 
           {/* Logout Button */}
-          <div className="p-2 sm:p-4 absolute bottom-0">
+          <div className="p-2 sm:p-4 absolute bottom-0 w-full">
             <Link href="/signin">
-              <button className="flex items-center space-x-2 block py-2 px-2 sm:py-2.5 sm:px-4 rounded transition duration-200 hover:bg-blue-300 cursor-pointer text-sm sm:text-base">
+              <button className="flex items-center space-x-2 block py-2 px-2 sm:py-2.5 sm:px-4 rounded transition duration-200 hover:bg-blue-300 cursor-pointer text-sm sm:text-base w-full text-left">
                 <FaSignOutAlt className="text-lg sm:text-xl text-gray-800" />
                 <span
                   className={`transition-opacity font-semibold px-2 sm:px-6 text-gray-800 duration-300 ${
@@ -114,7 +114,12 @@ const Dashboard = () => {
           </div>
         </nav>
       </div>
-      <div className="flex-grow ml-16 sm:ml-48 transition-all duration-300 relative">
+
+      <div
+        className={`flex-grow transition-all duration-300 ${
+          isCollapsed ? "ml-16 sm:ml-20" : "ml-48 sm:ml-64"
+        }`}
+      >
         <div
           className={`fixed top-4 ${
             isCollapsed ? "left-16 sm:left-28" : "left-48 sm:left-72"
@@ -130,20 +135,15 @@ const Dashboard = () => {
             <span className="text-lg sm:text-xl font-bold">{activeItem}</span>
           )}
         </div>
-       
-      </div>
-     
-        <div className="flex justify-center ">
-         {/* WELCOME MESSAGE FOR THE USER WITH THEIR REGISTERED NAME */}
-         <h1 className="text-blue-500 py-4 text-lg  md:hidden text-semibold font-serif">MedAccess</h1>
-            <button className=" text-sm font-mono md:text-2xl -bottom-48 md:hidden relative -left-20 bg-blue-400 p-4 h-16 border-none rounded-md"  >Find Nearest Hospital</button>  
-  
-         <Image className="hidden md:block relative -left-24" src={dash} alt="dashboard" width={700} height={700} />
-  
-     
+
+        <div className="flex justify-center">
+          {/* WELCOME MESSAGE FOR THE USER WITH THEIR REGISTERED NAME */}
+          <h1 className="text-blue-500 py-4 relative -right-2 text-lg md:hidden text-semibold font-serif">MedAccess</h1>
+         
+
+          <Image className="hidden md:block relative -left-24" src={dash} alt="dashboard" width={700} height={700} />
         </div>
-      
-        
+      </div>
     </div>
   );
 };

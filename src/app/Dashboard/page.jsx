@@ -10,7 +10,8 @@ import {
 } from "react-icons/fa";
 import logo from "../../assets/imgs/download.svg";
 import Image from "next/image";
-import Dash from "../../assets/imgs/Dashboard.svg";
+import dash from "../../assets/imgs/dash.svg";
+
 const Dashboard = () => {
   // FOR THE NAVBAR TOGGLE BUTTON
   const [isCollapsed, setIsCollapsed] = useState(true);
@@ -132,16 +133,13 @@ const Dashboard = () => {
        
       </div>
      
-        <div className="">
+        <div className="flex justify-center ">
          {/* WELCOME MESSAGE FOR THE USER WITH THEIR REGISTERED NAME */}
-            <h1 className=" text-sm font-mono md:text-2xl md:right-6 py-8 relative -right-20" >Hii👋🏻 Welcome!!</h1>
-          
-
-    <div className="relative -left-6">
-            {/* Image on the page */}
-            <Image className="relative -bottom-10  "  src={Dash} alt="Dashboard" width={800} height={800} />
-    </div>
-          
+         <h1 className="text-blue-500 py-4 text-lg  md:hidden text-semibold font-serif">MedAccess</h1>
+            <button className=" text-sm font-mono md:text-2xl -bottom-48 md:hidden relative -left-20 bg-blue-400 p-4 h-16 border-none rounded-md"  >Find Nearest Hospital</button>  
+  
+         <Image className="hidden md:block relative -left-24" src={dash} alt="dashboard" width={700} height={700} />
+  
      
         </div>
       

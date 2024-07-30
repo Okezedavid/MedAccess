@@ -109,8 +109,8 @@ export default function Signup() {
         </div>
         <div className="w-full lg:w-1/2 p-8">
           <div className="max-w-md mx-auto">
-            <h1 className="text-3xl flex justify-center font-medium font-serif mb-6 text-gray-900">Create An Account</h1>
-            <p className="text-lg flex justify-center font-medium font-serif mb-6 text-gray-900">
+            <h1 className="text-2xl md:text-3xl flex justify-center font-medium font-serif mb-6 text-gray-900">Create An Account</h1>
+            <p className="text-lg md:text-base flex justify-center font-medium font-serif mb-6 text-gray-900">
               Kickstart Healthy Living
             </p>
             <form onSubmit={handleRegister} className="space-y-4">

@@ -11,6 +11,7 @@ import pic3 from "../assets/imgs/pic3.webp";
 import pic4 from "../assets/imgs/pic4.jpg";
 import logo from "../assets/imgs/logo.jpg";
 import Image from "next/image";
+import Head from 'next/head';
 
 export default function Home() {
   useEffect(() => {
@@ -25,6 +26,9 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen overflow-hidden">
+        <Head>
+                <title>MedAccess</title>
+            </Head>
       <header
         id="header"
         className="w-full flex justify-between items-center py-4 px-6 md:px-24 text-black"

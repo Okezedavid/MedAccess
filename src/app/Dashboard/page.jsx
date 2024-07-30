@@ -1,100 +1,153 @@
 "use client";
-import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import Link from "next/link";
+import { useState } from "react";
+import {
+  FaHome,
+  FaHospital,
+  FaUser,
+  FaBars,
+  FaSignOutAlt,
+} from "react-icons/fa";
+import logo from "../../assets/imgs/download.svg";
+import Image from "next/image";
+import Dash from "../../assets/imgs/Dashboard.svg";
+const Dashboard = () => {
+  // FOR THE NAVBAR TOGGLE BUTTON
+  const [isCollapsed, setIsCollapsed] = useState(true);
+  const [activeItem, setActiveItem] = useState("");
 
-export default function Dashboard() {
-  const router = useRouter();
-  const [username, setUsername] = useState("JohnDoe"); // Replace with actual user data
-  const [state, setState] = useState("");
-  const [area, setArea] = useState("");
-
-  const handleLogout = () => {
-    // Implement your logout functionality here
-    router.push('/signin'); // Redirect to login page
+  const handleToggle = () => {
+    setIsCollapsed(!isCollapsed);
   };
 
-  const handleSearch = () => {
-    // Implement search functionality here
-    // Fetch hospitals based on selected state and area
+  const handleNavItem = (item) => {
+    setActiveItem(item);
   };
 
   return (
-    <div>
-      <nav className="bg-white shadow-md">
-        <div className="container mx-auto py-4 px-4 md:px-0">
-          <div className="flex justify-between items-center">
-            <div className="text-2xl font-bold text-gray-900">
-              Dashboard
-            </div>
-            <div className="flex space-x-4">
-              <a href="/" className="text-gray-600 hover:text-gray-900">
-                Home
-              </a>
-              <a href="#search" className="text-gray-600 hover:text-gray-900">
-                Search
-              </a>
-              <a href="#account" className="text-gray-600 hover:text-gray-900">
-                Account
-              </a>
-            </div>
+    <div className="flex">
+      <div
+        className={`h-screen bg-blue-100 text-white flex flex-col fixed ${
+          isCollapsed ? "w-16 sm:w-20" : "w-48 sm:w-64"
+        } transition-all duration-300`}
+      >
+        <div className="flex items-center justify-between h-16 sm:h-20 border-b border-gray-700 px-2 sm:px-4">
+          <Image
+            className="relative -right-2 sm:-right-3"
+            src={logo}
+            alt="logo"
+            width={30}
+            height={30}
+          />
+        </div>
+
+        <nav className="flex-grow">
+          <ul className="flex flex-col p-2 sm:p-4 space-y-2">
+            <li className="flex items-center py-3">
+              <Link href="/home">
+                <p
+                  onClick={() => handleNavItem("Home")}
+                  className="flex items-center space-x-2 block py-2 px-2 sm:py-2.5 sm:px-4 rounded transition duration-200 hover:bg-blue-300 cursor-pointer text-sm sm:text-base"
+                >
+                  <FaHome className="text-lg sm:text-xl text-gray-600" />
+                  <span
+                    className={`transition-opacity px-2 sm:px-6 font-serif text-gray-600 duration-300 ${
+                      isCollapsed ? "opacity-0" : "opacity-100"
+                    } ${isCollapsed ? "hidden" : "block"}`}
+                  >
+                    Home
+                  </span>
+                </p>
+              </Link>
+            </li>
+            <li className="flex items-center py-3">
+              <Link href="/hospitals">
+                <p
+                  onClick={() => handleNavItem("Hospitals")}
+                  className="flex items-center space-x-2 block py-2 px-2 sm:py-2.5 sm:px-4 rounded transition duration-200 hover:bg-blue-300 cursor-pointer text-sm sm:text-base"
+                >
+                  <FaHospital className="text-lg sm:text-xl text-gray-600" />
+                  <span
+                    className={`transition-opacity font-serif px-2 sm:px-6 text-gray-600 duration-300 ${
+                      isCollapsed ? "opacity-0" : "opacity-100"
+                    } ${isCollapsed ? "hidden" : "block"}`}
+                  >
+                    Hospitals
+                  </span>
+                </p>
+              </Link>
+            </li>
+            <li className="flex items-center py-3">
+              <Link href="/account">
+                <p
+                  onClick={() => handleNavItem("Account")}
+                  className="flex items-center space-x-2 block py-2 px-2 sm:py-2.5 sm:px-4 rounded transition duration-200 hover:bg-blue-300 cursor-pointer text-sm sm:text-base"
+                >
+                  <FaUser className="text-lg sm:text-xl text-gray-600" />
+                  <span
+                    className={`transition-opacity font-serif px-2 sm:px-6 text-gray-600 duration-300 ${
+                      isCollapsed ? "opacity-0" : "opacity-100"
+                    } ${isCollapsed ? "hidden" : "block"}`}
+                  >
+                    Account
+                  </span>
+                </p>
+              </Link>
+            </li>
+          </ul>
+
+          {/* Logout Button */}
+          <div className="p-2 sm:p-4 absolute bottom-0">
+            <Link href="/signin">
+              <button className="flex items-center space-x-2 block py-2 px-2 sm:py-2.5 sm:px-4 rounded transition duration-200 hover:bg-blue-300 cursor-pointer text-sm sm:text-base">
+                <FaSignOutAlt className="text-lg sm:text-xl text-gray-800" />
+                <span
+                  className={`transition-opacity font-semibold px-2 sm:px-6 text-gray-800 duration-300 ${
+                    isCollapsed ? "opacity-0" : "opacity-100"
+                  } ${isCollapsed ? "hidden" : "block"}`}
+                >
+                  Logout
+                </span>
+              </button>
+            </Link>
           </div>
-        </div>
-      </nav>
-      <div className="container mx-auto py-8 px-4 md:px-0 text-center">
-        <h1 className="text-4xl font-bold">Welcome</h1>
-        <p className="text-lg text-gray-600 mt-4">
-          Welcome to your dashboard. Here you can view your account details, manage your subscription, view your order history, and more.
-        </p>
+        </nav>
       </div>
-
-      {/* Search Section */}
-      <div id="search" className="container mx-auto py-8 px-4 md:px-0">
-        <h2 className="text-2xl font-bold text-center">Search Hospitals</h2>
-        <div className="mt-4 flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4">
-          <select
-            className="p-2 border border-gray-300 rounded-lg"
-            value={state}
-            onChange={(e) => setState(e.target.value)}
-          >
-            <option value="">Select State</option>
-            <option value="state1">State 1</option>
-            <option value="state2">State 2</option>
-            {/* Add more states as needed */}
-          </select>
-          <select
-            className="p-2 border border-gray-300 rounded-lg"
-            value={area}
-            onChange={(e) => setArea(e.target.value)}
-          >
-            <option value="">Select Area</option>
-            <option value="area1">Area 1</option>
-            <option value="area2">Area 2</option>
-            {/* Add more areas as needed */}
-          </select>
+      <div className="flex-grow ml-16 sm:ml-48 transition-all duration-300 relative">
+        <div
+          className={`fixed top-4 ${
+            isCollapsed ? "left-16 sm:left-28" : "left-48 sm:left-72"
+          } z-50 flex items-center space-x-2 transition-all duration-300`}
+        >
           <button
-            className="p-2 bg-blue-500 text-white rounded-lg"
-            onClick={handleSearch}
+            onClick={handleToggle}
+            className="focus:outline-none text-gray-700 p-2 rounded-full transform transition-transform duration-300"
           >
-            Search
+            <FaBars className="text-lg sm:text-xl" />
           </button>
+          {activeItem && (
+            <span className="text-lg sm:text-xl font-bold">{activeItem}</span>
+          )}
         </div>
+       
       </div>
+     
+        <div className="">
+         {/* WELCOME MESSAGE FOR THE USER WITH THEIR REGISTERED NAME */}
+            <h1 className=" text-sm font-mono md:text-2xl md:right-6 py-8 relative -right-20" >Hii👋🏻 Welcome!!</h1>
+          
 
-      {/* Account Section */}
-      <div id="account" className="container mx-auto py-8 px-4 md:px-0">
-        <h2 className="text-2xl font-bold text-center">Account</h2>
-        <p className="text-center text-lg text-gray-600 mt-4">
-          Welcome, {username}
-        </p>
-        <div className="flex justify-center mt-4">
-          <button
-            className="p-2 bg-red-500 text-white rounded-lg"
-            onClick={handleLogout}
-          >
-            Sign out
-          </button>
+    <div className="relative -left-6">
+            {/* Image on the page */}
+            <Image className="relative -bottom-10  "  src={Dash} alt="Dashboard" width={800} height={800} />
+    </div>
+          
+     
         </div>
-      </div>
+      
+        
     </div>
   );
-}
+};
+
+export default Dashboard;

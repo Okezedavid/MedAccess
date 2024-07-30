@@ -104,7 +104,7 @@ export default function SignIn() {
         <div className="w-full md:w-1/2 p-8">
           <div className="max-w-md mx-auto">
             <form onSubmit={handleLogin} className="space-y-4">
-              <h1 className="text-2xl font-bold mb-6 text-gray-900 relative -top-7 -right-16 font-mono ">
+              <h1 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900 flex justify-center relative -top-7  font-mono ">
                 Welcome Back
               </h1>
               <div>

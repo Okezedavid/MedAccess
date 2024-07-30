@@ -42,7 +42,7 @@ export default function ResetPassword() {
       {/* Right half - form */}
       <div className="flex flex-col items-center justify-center w-full md:w-1/2 p-8">
         <form onSubmit={handleResetPassword} className="mt-8 p-8 bg-white rounded-lg max-w-md w-full">
-          <h1 className="text-3xl font-bold mb-6 text-gray-900 text-center md:text-left relative -top-6">
+          <h1 className="text-2xl md:text-3xl font-serif mb-6 text-gray-900 text-center md:text-left relative -top-6">
             Reset Password
           </h1>
           <p className="text-gray-700 text-center md:text-left text-sm">
@@ -57,7 +57,7 @@ export default function ResetPassword() {
               Email Address
             </label>
             <input
-              placeholder="Enter registered email address"
+              placeholder="Enter registered email"
               type="email"
               name="email"
               id="email"

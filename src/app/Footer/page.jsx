@@ -10,8 +10,8 @@ export default function Footer () {
   <div className="container mx-auto py-8 px-4 md:px-0">
     <div className="flex flex-wrap justify-center md:justify-between">
       {/* Contact Info */}
-      <div className="w-full md:w-1/4 mb-8 md:mb-0">
-        <h2 className="text-2xl font-bold mb-4">Get In Touch</h2>
+      <div className="w-full md:w-1/4 mb-8 md:mb-0 px-4">
+        <h2 className="text-xl font-bold mb-4">Get In Touch</h2>
         <ul className="space-y-2">
           <li className="flex items-center">
             <i className="fas fa-phone-alt text-gray-400 mr-2"></i>
@@ -37,8 +37,8 @@ export default function Footer () {
 
       {/* Social Icons */}
       <div className="w-full md:w-1/4 mb-8 md:mb-0">
-        <div className="flex justify-center md:justify-start relative -right-20 ">
-          <h2 className="text-xl font-bold mb-4">Follow Us</h2>
+        <div className="flex justify-center relative  md:-right-16 ">
+          <h2 className="text-xl font-bold mb-4">Social</h2>
           <div className="social-icons flex space-x-4  relative right-24 -bottom-10">
             <a
               href="#"
@@ -75,7 +75,7 @@ export default function Footer () {
       </div>
 
       {/* Account Links */}
-      <div className="w-full md:w-1/4 mb-8 relative -right-8 md:mb-0">
+      <div className="w-full md:w-1/4 mb-8 relative -right-8 md:mb-0 py-3 ">
         <h2 className="text-xl font-bold mb-4">Account</h2>
         <ul className="space-y-2">
           <li>
@@ -108,8 +108,8 @@ export default function Footer () {
     <hr className="my-6 relative top-2 border-gray-700" />
 
     {/* Copyright */}
-    <div className="text-center -mb-6 md:text-left text-sm">
-      <p>&copy; 2024 MedAccess Cooperation. All rights Reserved</p>
+    <div className="text-center -mb-6 md:text-left ">
+      <p className="text-xs md:sm">&copy; 2024 MedAccess Cooperation. All rights Reserved</p>
     </div>
   </div>
 </footer>

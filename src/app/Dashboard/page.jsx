@@ -1,151 +1,102 @@
 "use client";
-import Link from "next/link";
-import { useState } from "react";
-import {
-  FaHome,
-  FaHospital,
-  FaUser,
-  FaBars,
-  FaSignOutAlt,
-} from "react-icons/fa";
-import logo from "../../assets/imgs/download.svg";
-import Image from "next/image";
+import React, { useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import logo from "../../assets/imgs/logo.png";
+import { GiHamburgerMenu } from 'react-icons/gi';
+import { IoMdClose } from 'react-icons/io'; 
 import dash from "../../assets/imgs/dash.svg";
 
-const Dashboard = () => {
-  // FOR THE NAVBAR TOGGLE BUTTON
-  const [isCollapsed, setIsCollapsed] = useState(true);
-  const [activeItem, setActiveItem] = useState("");
-
-  const handleToggle = () => {
-    setIsCollapsed(!isCollapsed);
-  };
-
-  const handleNavItem = (item) => {
-    setActiveItem(item);
-  };
+export default function Dashboard() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // State to manage menu visibility
 
   return (
-    <div className="flex">
-      <div
-        className={`h-screen bg-blue-100 text-white flex flex-col fixed top-0 left-0 ${
-          isCollapsed ? "w-16 sm:w-20" : "w-48 sm:w-64"
-        } transition-all duration-300 z-40`}
-      >
-        <div className="flex items-center justify-between h-16 sm:h-20 border-b border-gray-700 px-2 sm:px-4">
-          <Image
-            className="relative -right-2 sm:-right-3"
-            src={logo}
-            alt="logo"
-            width={30}
-            height={30}
-          />
-        </div>
+    <div>
+      <main>
+        <nav className="bg-white shadow-lg fixed-top w-full z-50">
+          <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+            {/* Logo and Title */}
+            <div className="flex items-center space-x-4">
+              <Image src={logo} alt="logo" width={100} height={100} />
+              <p className="text-2xl font-bold text-gray-800 relative -left-7 font-mono">MedAccess</p>
+            </div>
 
-        <nav className="flex-grow">
-          <ul className="flex flex-col p-2 sm:p-4 space-y-2">
-            <li className="flex items-center py-3">
-              <Link href="/home">
-                <p
-                  onClick={() => handleNavItem("Home")}
-                  className="flex items-center space-x-2 block py-2 px-2 sm:py-2.5 sm:px-4 rounded transition duration-200 hover:bg-blue-300 cursor-pointer text-sm sm:text-base"
-                >
-                  <FaHome className="text-lg sm:text-xl text-gray-600" />
-                  <span
-                    className={`transition-opacity px-2 sm:px-6 font-serif text-gray-600 duration-300 ${
-                      isCollapsed ? "opacity-0" : "opacity-100"
-                    } ${isCollapsed ? "hidden" : "block"}`}
-                  >
-                    Home
-                  </span>
-                </p>
-              </Link>
-            </li>
-            <li className="flex items-center py-3">
-              <Link href="/hospitals">
-                <p
-                  onClick={() => handleNavItem("Hospitals")}
-                  className="flex items-center space-x-2 block py-2 px-2 sm:py-2.5 sm:px-4 rounded transition duration-200 hover:bg-blue-300 cursor-pointer text-sm sm:text-base"
-                >
-                  <FaHospital className="text-lg sm:text-xl text-gray-600" />
-                  <span
-                    className={`transition-opacity font-serif px-2 sm:px-6 text-gray-600 duration-300 ${
-                      isCollapsed ? "opacity-0" : "opacity-100"
-                    } ${isCollapsed ? "hidden" : "block"}`}
-                  >
-                    Hospitals
-                  </span>
-                </p>
-              </Link>
-            </li>
-            <li className="flex items-center py-3">
-              <Link href="/account">
-                <p
-                  onClick={() => handleNavItem("Account")}
-                  className="flex items-center space-x-2 block py-2 px-2 sm:py-2.5 sm:px-4 rounded transition duration-200 hover:bg-blue-300 cursor-pointer text-sm sm:text-base"
-                >
-                  <FaUser className="text-lg sm:text-xl text-gray-600" />
-                  <span
-                    className={`transition-opacity font-serif px-2 sm:px-6 text-gray-600 duration-300 ${
-                      isCollapsed ? "opacity-0" : "opacity-100"
-                    } ${isCollapsed ? "hidden" : "block"}`}
-                  >
-                    Account
-                  </span>
-                </p>
-              </Link>
-            </li>
-          </ul>
+            {/* Mobile Menu Toggle Button */}
+            <button
+              className="lg:hidden text-gray-600 hover:text-blue-500 focus:outline-none"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? <IoMdClose size={24} /> : <GiHamburgerMenu size={24} />}
+            </button>
 
-          {/* Logout Button */}
-          <div className="p-2 sm:p-4 absolute bottom-0 w-full">
-            <Link href="/signin">
-              <button className="flex items-center space-x-2 block py-2 px-2 sm:py-2.5 sm:px-4 rounded transition duration-200 hover:bg-blue-300 cursor-pointer text-sm sm:text-base w-full text-left">
-                <FaSignOutAlt className="text-lg sm:text-xl text-gray-800" />
-                <span
-                  className={`transition-opacity font-semibold px-2 sm:px-6 text-gray-800 duration-300 ${
-                    isCollapsed ? "opacity-0" : "opacity-100"
-                  } ${isCollapsed ? "hidden" : "block"}`}
+            {/* Navbar Links */}
+            <div className="hidden lg:flex flex-1 justify-center space-x-8">
+              <Link className="relative group text-gray-600 text-sm md:text-lg hover:text-blue-500 transition-colors duration-300" href="/">
+                Home
+                <span className="absolute left-0 -bottom-1 w-full h-1 bg-blue-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+              </Link>
+              <Link className="relative group text-gray-600 hover:text-blue-500 text-sm md:text-lg transition-colors duration-300" href="/hospitals">
+                Search
+                <span className="absolute left-0 -bottom-1 w-full h-1 bg-blue-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+              </Link>
+              <Link className="relative group text-gray-600 hover:text-blue-500 text-sm md:text-lg transition-colors duration-300" href="/account">
+                Account
+                <span className="absolute left-0 -bottom-1 w-full h-1 bg-blue-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+              </Link>
+            </div>
+
+            {/* Mobile Menu */}
+            <div
+              className={`lg:hidden fixed top-0 left-0 w-full h-screen bg-white transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}
+            >
+              <div className="flex flex-col items-center mt-16 space-y-4">
+                {/* Close Button */}
+                <button
+                  className="absolute top-4 right-4 text-gray-600 hover:text-blue-500"
+                  onClick={() => setIsMenuOpen(false)}
                 >
-                  Logout
-                </span>
-              </button>
-            </Link>
+                  <IoMdClose size={24} />
+                </button>
+
+                <Link className="text-gray-600 hover:text-blue-500 text-lg font-sans" href="/" onClick={() => setIsMenuOpen(false)}>
+                  Home
+                </Link>
+                <Link className="font-sans text-gray-600 hover:text-blue-500 text-lg" href="/hospitals" onClick={() => setIsMenuOpen(false)}>
+                  Search
+                </Link>
+                <Link className="text-gray-600 hover:text-blue-500 text-lg font-sans" href="/account" onClick={() => setIsMenuOpen(false)}>
+                  Account
+                </Link>
+              </div>
+            </div>
           </div>
         </nav>
-      </div>
-
-      <div
-        className={`flex-grow transition-all duration-300 ${
-          isCollapsed ? "ml-16 sm:ml-20" : "ml-48 sm:ml-64"
-        }`}
-      >
-        <div
-          className={`fixed top-4 ${
-            isCollapsed ? "left-16 sm:left-28" : "left-48 sm:left-72"
-          } z-50 flex items-center space-x-2 transition-all duration-300`}
-        >
-          <button
-            onClick={handleToggle}
-            className="focus:outline-none text-gray-700 p-2 rounded-full transform transition-transform duration-300"
-          >
-            <FaBars className="text-lg sm:text-xl" />
-          </button>
-          {activeItem && (
-            <span className="text-lg sm:text-xl font-bold">{activeItem}</span>
-          )}
-        </div>
-
-        <div className="flex justify-center">
-          {/* WELCOME MESSAGE FOR THE USER WITH THEIR REGISTERED NAME */}
-          <h1 className="text-blue-500 py-4 relative -right-2 text-lg md:hidden text-semibold font-serif">MedAccess</h1>
-         
-
-          <Image className="hidden md:block relative -left-24" src={dash} alt="dashboard" width={700} height={700} />
-        </div>
-      </div>
+        <section className="px-4 py-8 bg-gray-100">
+          <div className="max-w-3xl mx-auto">
+            <details className="group border font-sans border-gray-200 rounded-lg shadow-sm bg-white mb-4">
+              <summary className="cursor-pointer font-serif px-6 py-4 text-lg font-medium text-gray-700 bg-gray-200 rounded-t-lg hover:bg-gray-300 transition-colors duration-300">
+                Search
+              </summary>
+              <div className="px-6 py-4 bg-white">
+                Click on search to view and export hospitals near you.
+              </div>
+            </details>
+            <details className="group border font-sans border-gray-200 rounded-lg shadow-sm bg-white mb-4">
+              <summary className="cursor-pointer font-serif px-6 py-4 text-lg font-medium text-gray-700 bg-gray-200 rounded-t-lg hover:bg-gray-300 transition-colors duration-300">
+                Account
+              </summary>
+              <div className="px-6 py-4 bg-white">
+                Click on Account to view hospitals near you.
+              </div>
+            </details>
+          </div>
+        </section>
+        <section className="pt-8">
+          <div className="relative">
+            <Image src={dash} alt="dashboard" layout="responsive" width={1920} height={1080} />
+          </div>
+        </section>
+      </main>
     </div>
   );
-};
-
-export default Dashboard;
+}

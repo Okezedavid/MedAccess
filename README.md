@@ -60,8 +60,8 @@ The Hospital Finder App uses Firebase Authentication for user authentication. It
 - Logout: Logged-in users can log out from the app.
 
 ## Hospital Data Management
-##Export & Sharing
-##Testing
+## Export & Sharing
+## Testing
 
 The MedAccess App includes unit tests and component tests to ensure the quality and reliability of the code. The tests cover critical components and functionalities of the app.
 

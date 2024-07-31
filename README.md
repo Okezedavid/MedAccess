@@ -47,7 +47,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 To view all the dependencies in the project visit the `package.json` file
 
-##Firebase Setup
+## Firebase Setup
 To set up Firebase for the Hospital Finder App, follow these steps:
 1.Create a Firebase project at [[](https://console.firebase.google.com.)
 2.Enable Firebase Authentication and Firestore in the Firebase project settings.

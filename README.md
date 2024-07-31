@@ -15,17 +15,17 @@ The MedAccess App is a web application that allows users to find hospitals near 
  - Deployment
  - Conclusion
 
-##Introduction
+## Introduction
 
 The MedAccess App is designed to help users easily find hospitals in their vicinity and access important information about each hospital. It provides a user-friendly interface for searching hospitals, creating hospital entries, and exporting hospital data. The app also supports user authentication to ensure secure access to the features.
 
-##Prerequisites
+## Prerequisites
 
 Before getting started with the Hospital Finder App, ensure that you have the following prerequisites:
 - Node.js and npm (Node Package Manager) installed on your machine.
 - A Firebase project with Firebase Authentication and Firebase Firestore enabled.
 
-##Installations
+## Installations
 
 To install and set up the Hospital Finder App, follow these steps:
 1.Navigate to the project directory:`cd Altschool Capstone Project`
@@ -43,7 +43,7 @@ bun dev
 ```
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-##Dependencies
+## Dependencies
 
 To view all the dependencies in the project visit the `package.json` file
 
@@ -53,13 +53,13 @@ To set up Firebase for the Hospital Finder App, follow these steps:
 2.Enable Firebase Authentication and Firestore in the Firebase project settings.
 3.Obtain the Firebase configuration values (apiKey, authDomain, projectId, etc.) from the Firebase project settings.
 
-##Authentication
+## Authentication
 The Hospital Finder App uses Firebase Authentication for user authentication. It provides the following features:
 - Registration: Users can register with their email and password.
 - Login: Registered users can log in to access the app.
 - Logout: Logged-in users can log out from the app.
 
-##Hospital Data Management
+## Hospital Data Management
 ##Export & Sharing
 ##Testing
 
@@ -70,14 +70,14 @@ To run the tests, use the following command:
   npm test
 ```
 
-##Deployment
+## Deployment
 
 To deploy the Hospital Finder App to a production environment, follow these steps:
 1.Build the production-ready app using the following command:
 ```bash
   npm run build
 ```
-##Conclusion
+## Conclusion
 
 The MedAccess App is a comprehensive solution for finding hospitals, managing hospital data, exporting data, and sharing it with others. The detailed documentation provided here gives you an overview of the project structure, dependencies, Firebase setup, authentication, hospital data management, export and sharing features, testing, and deployment.
 

@@ -75,10 +75,18 @@ export default function Dashboard() {
           <div className="max-w-3xl mx-auto">
             <details className="group border font-sans border-gray-200 rounded-lg shadow-sm bg-white mb-4">
               <summary className="cursor-pointer font-serif px-6 py-4 text-lg font-medium text-gray-700 bg-gray-200 rounded-t-lg hover:bg-gray-300 transition-colors duration-300">
+              Home
+              </summary>
+              <div className="px-6 py-4 bg-white">
+                Click on <span className='font-semibold text-blue-300'>Home</span> to go back to the home page.
+              </div>
+            </details>
+            <details className="group border font-sans border-gray-200 rounded-lg shadow-sm bg-white mb-4">
+              <summary className="cursor-pointer font-serif px-6 py-4 text-lg font-medium text-gray-700 bg-gray-200 rounded-t-lg hover:bg-gray-300 transition-colors duration-300">
                 Search
               </summary>
               <div className="px-6 py-4 bg-white">
-                Click on search to view and export hospitals near you.
+                Click on <span className='font-semibold text-blue-300'>Search</span> to view and export hospitals near you.
               </div>
             </details>
             <details className="group border font-sans border-gray-200 rounded-lg shadow-sm bg-white mb-4">
@@ -86,7 +94,7 @@ export default function Dashboard() {
                 Account
               </summary>
               <div className="px-6 py-4 bg-white">
-                Click on Account to view hospitals near you.
+                Click on <span className='font-semibold text-blue-300'>Account</span> to view some of your details.
               </div>
             </details>
           </div>

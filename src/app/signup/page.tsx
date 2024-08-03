@@ -21,6 +21,7 @@ export default function Signup() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);  // State to manage the loading spinner
+  const [agreed, setAgreed] = useState(false);  // State for the checkbox
   const router = useRouter();
 
   const handleRegister = async (event: FormEvent) => {
@@ -28,6 +29,12 @@ export default function Signup() {
     setError(null);
     setMessage(null);
     setLoading(true);  // Set loading to true when registration starts
+
+    if (!agreed) {
+      setError("You must agree to the terms and policies");
+      setLoading(false);  // Set loading to false if there's an error
+      return;
+    }
 
     if (password !== confirmPassword) {
       setError("Passwords do not match");
@@ -209,6 +216,21 @@ export default function Signup() {
                     {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
                   </div>
                 </div>
+              </div>
+              <div className="flex items-center space-x-2">
+                <input
+                  type="checkbox"
+                  id="terms"
+                  checked={agreed}
+                  onChange={() => setAgreed(!agreed)}
+                  className="w-4 h-4 border border-gray-300 rounded"
+                  required
+                />
+                <label htmlFor="terms" className="text-sm text-gray-700">
+                  I agree to the{" "}
+                  <span className="text-blue-500 hover:underline cursor-pointer">Terms of Service</span> and{" "}
+                  <span className="text-blue-500 hover:underline cursor-pointer">Privacy Policy</span>
+                </label>
               </div>
               {error && <p className="text-red-500 text-sm">{error}</p>}
               {message && <p className="text-green-500 text-sm">{message}</p>}

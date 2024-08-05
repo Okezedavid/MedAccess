@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import HospitalList from "../hospitalList/hospitalList";
+import Markdown from "../markdown/markdown"
 
 // FOR THE SKELETON LOADING
 const SkeletonCard: React.FC = () => (
@@ -215,6 +216,9 @@ const MyHospitals: React.FC = () => {
             )}
           </div>
         </div>
+      </div>
+      <div>
+        <Markdown/>
       </div>
     </section>
   );

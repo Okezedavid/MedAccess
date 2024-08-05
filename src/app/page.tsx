@@ -95,18 +95,17 @@ export default function Home() {
                 <h3 className="text-xl font-bold">Find the nearest hospital to you and make an appointment.</h3>
                 <p>
                   Discover Your Perfect Care: Find Your Hospital, Anytime, Anywhere!
-                  <br />
-                  euismod in, pharetra sed ultricies.
+                
                 </p>
               </div>
-              <div>
+              {/* <div>
                 <h3 className="text-xl font-bold">Make a lasting impact on the future of your health</h3>
                 <p>
                   Tristique yonve cursus jam nulla quam
                   <br />
                   loreipsu gravida adipiscing lorem
                 </p>
-              </div>
+              </div> */}
             </div>
             <div
               className="flex-item image fit round mb-8 md:mb-0 md:mx-8"
@@ -125,18 +124,17 @@ export default function Home() {
                 <h3 className="text-xl font-bold">Nationwide</h3>
                 <p>
                   Hospitals from all over Nigeria.
-                  <br />
-                  blandit sit et amet, sagittis magna.
+               
                 </p>
               </div>
-              <div>
+              {/* <div>
                 <h3 className="text-xl font-bold">Suscipit nibh dolore</h3>
                 <p>
                   Pellentesque egestas sem. Suspendisse
                   <br />
                   modo ullamcorper feugiat lorem.
                 </p>
-              </div>
+              </div> */}
             </div>
           </div>
         </section>
@@ -154,12 +152,40 @@ export default function Home() {
             </footer>
             <br />
             <figure>
-              <blockquote className="text-lg italic mb-4">
+              <blockquote className="text-sm md:text-base italic mb-4">
                 As a healthcare facility, we believe that everyone should have access to quality care. At MedAccess, we’re committed to empowering patients and caregivers by making healthcare information more accessible and understandable. Our goal is to improve healthcare outcomes for everyone, regardless of their background or circumstances.
               </blockquote>
             </figure>
           </div>
         </section>
+
+        <section
+  id="services"
+  className=" py-16 px-6 md:px-24"
+  data-aos="flip-right"
+  data-aos-duration="1500"
+>
+  <div className="container mx-auto text-center">
+    <h1 className="text-2xl md:text-3xl font-serif font-bold mb-8 text-blue-700">
+      Our Services
+    </h1>
+    <ol className="list-disc list-inside space-y-4 text-left mx-auto max-w-2xl">
+      <li className="text-base md:text-xl font-semibold font-mono">
+        Search Hospitals
+      </li>
+      <li className="text-base md:text-xl font-semibold font-mono">
+        Export Hospitals
+      </li>
+      <li className="text-base md:text-xl font-semibold font-mono">
+        Share Hospitals
+      </li>
+      <li className="text-base md:text-xl font-semibold font-mono">
+        Markdown Support
+      </li>
+    </ol>
+  </div>
+</section>
+
 
         {/* Three */}
         <section id="three" className="wrapper py-16" data-aos="fade-up">
@@ -175,10 +201,9 @@ export default function Home() {
                 />
               </div>
               <div className="content">
-                <h3 className="text-xl font-bold">Consequat</h3>
-                <p>
-                  Placerat ornare. Pellentesque od sed euismod in, pharetra
-                  ltricies edarcu cas consequat.
+                <h3 className="text-xl font-bold font-mono">Healing starts here</h3>
+                <p className="text-sm">
+                We provide facilities, resources and care to empower patients on their pathway to healing.
                 </p>
               </div>
             </div>
@@ -193,10 +218,9 @@ export default function Home() {
                 />
               </div>
               <div className="content">
-                <h3 className="text-xl font-bold">Free Consulation</h3>
-                <p>
-                  Morbi in sem quis dui placerat Pellentesque odio nisi, euismod
-                  pharetra lorem ipsum.
+                <h3 className="text-xl font-bold font-mono">Free Consulation</h3>
+                <p className="text-sm">
+                Register with us to access services like video chats or phone calls with doctors or nurses. 
                 </p>
               </div>
             </div>
@@ -211,15 +235,17 @@ export default function Home() {
                 />
               </div>
               <div className="content">
-                <h3 className="text-xl font-bold">Malesuada</h3>
-                <p>
+                <h3 className="text-xl font-bold font-mono">Accessibility</h3>
+                <p className="text-sm">
                   Nam dui mi, tincidunt quis, accu an porttitor, facilisis
                   luctus que metus vulputate sem magna.
                 </p>
               </div>
             </div>
           </div>
+        
         </section>
+   
       </main>
       <div><Footer /></div>
     </div>

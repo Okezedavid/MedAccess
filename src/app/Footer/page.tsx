@@ -4,10 +4,10 @@ export default function Footer () {
             {/* Footer */}
 <footer
   id="footer"
-  className="w-full text-white mt-auto bg-zinc-950"
+  className="w-full text-white mt-auto bg-blue-900"
   data-aos="fade-up"
 >
-  <div className="container mx-auto py-8 px-4 md:px-0">
+  <div className="container mx-auto py-8 px-4 md:px-0 text-white font-sans">
     <div className="flex flex-wrap justify-center md:justify-between">
       {/* Contact Info */}
       <div className="w-full md:w-1/4 mb-8 md:mb-0 px-4">
@@ -105,7 +105,7 @@ export default function Footer () {
     </div>
 
     {/* Divider */}
-    <hr className="my-6 relative top-2 border-gray-700" />
+    <hr className="my-6 relative top-2 border-gray-400" />
 
     {/* Copyright */}
     <div className="text-center -mb-6 md:text-left ">

@@ -4,7 +4,7 @@ export default function Footer () {
             {/* Footer */}
 <footer
   id="footer"
-  className="w-full text-white mt-auto bg-blue-900"
+  className="w-full text-white mt-auto bg-blue-950"
   data-aos="fade-up"
 >
   <div className="container mx-auto py-8 px-4 md:px-0 text-white font-sans">

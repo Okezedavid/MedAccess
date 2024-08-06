@@ -46,7 +46,7 @@ export default function Home() {
         <div className="flex flex-col xs:flex-row items-center xs:items-end space-y-2 xs:space-y-0 xs:space-x-2 relative -top-5">
           <Link href="/signin">
             {" "}
-            <button className="text-xs md:text-sm text-blue-900 py-2 px-4 ">
+            <button className="text-xs md:text-sm text-blue-900 py-2 px-2">
               Log In
             </button>
           </Link>
@@ -201,7 +201,7 @@ export default function Home() {
                 />
               </div>
               <div className="content">
-                <h3 className="text-xl font-bold font-mono">Healing starts here</h3>
+                <h3 className="text-lg md:text-xl font-bold font-mono">Healing starts here</h3>
                 <p className="text-sm">
                 We provide facilities, resources and care to empower patients on their pathway to healing.
                 </p>
@@ -218,7 +218,7 @@ export default function Home() {
                 />
               </div>
               <div className="content">
-                <h3 className="text-xl font-bold font-mono">Free Consulation</h3>
+                <h3 className="text-lg md:text-xl font-bold font-mono">Free Consulation</h3>
                 <p className="text-sm">
                 Register with us to access services like video chats or phone calls with doctors or nurses. 
                 </p>
@@ -235,7 +235,7 @@ export default function Home() {
                 />
               </div>
               <div className="content">
-                <h3 className="text-xl font-bold font-mono">Accessibility</h3>
+                <h3 className="text-lg md:text-xl font-bold font-mono">Accessibility</h3>
                 <p className="text-sm">
                   Nam dui mi, tincidunt quis, accu an porttitor, facilisis
                   luctus que metus vulputate sem magna.

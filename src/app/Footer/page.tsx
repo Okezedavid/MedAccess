@@ -105,7 +105,7 @@ export default function Footer () {
     </div>
 
     {/* Divider */}
-    <hr className="my-6 relative top-2 border-gray-400" />
+    <hr className="my-6 relative top-2 border-gray-500" />
 
     {/* Copyright */}
     <div className="text-center -mb-6 md:text-left ">

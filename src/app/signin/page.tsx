@@ -40,7 +40,7 @@ export default function SignIn() {
             email: user.email,
           });
         }
-        router.push("/Dashboard");
+        router.push("/Welcome");
       } else {
         setError("Please verify your email address");
       }
@@ -73,7 +73,7 @@ export default function SignIn() {
             email: user.email,
           });
         }
-        router.push("/Dashboard");
+        router.push("/Welcome");
       }
     } catch (error: any) {
       console.error("Google Sign-In Error:", error);

@@ -94,7 +94,7 @@ export default function Signup() {
       const user = result.user;
 
       setMessage("Google sign-in successful. User: " + user.displayName);
-      router.push("/Dashboard");
+      router.push("/Welcome");
     } catch (error) {
       if (error instanceof Error) {
         setError(error.message);

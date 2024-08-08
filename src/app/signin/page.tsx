@@ -96,7 +96,7 @@ export default function SignIn() {
       <Spinner />
     ) : (
       <div className="min-h-screen flex flex-col md:flex-row items-center justify-center px-4 md:px-8 relative">
-        {/* Illustration container */}
+ 
         <div className="hidden md:block w-full md:w-1/2 flex justify-center">
           <Image src={login} alt="login" className="h-full" />
         </div>

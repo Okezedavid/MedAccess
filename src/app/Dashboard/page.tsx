@@ -99,7 +99,7 @@ export default function Dashboard() {
         </div>
       </nav>
 
-      <main className="mt-20">
+      <main className="mt-24">
         {/* Your main content goes here */}
       </main>
     </div>

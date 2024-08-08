@@ -203,7 +203,7 @@ export default function Home() {
               <div className="content">
                 <h3 className="text-lg md:text-xl font-bold font-mono">Healing starts here</h3>
                 <p className="text-sm">
-                We provide facilities, resources and care to empower patients on their pathway to healing.
+                We provide facilities, resources and care to empower patients on their pathway to full recovery.
                 </p>
               </div>
             </div>
@@ -237,8 +237,7 @@ export default function Home() {
               <div className="content">
                 <h3 className="text-lg md:text-xl font-bold font-mono">Accessibility</h3>
                 <p className="text-sm">
-                  Nam dui mi, tincidunt quis, accu an porttitor, facilisis
-                  luctus que metus vulputate sem magna.
+                 Our services are available to anyone and everyone who might need them.We are just a WebApp away.
                 </p>
               </div>
             </div>

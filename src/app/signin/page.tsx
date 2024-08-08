@@ -178,9 +178,9 @@ export default function SignIn() {
               >
                 <FaGoogle className="mr-2 text-red-500" /> Sign in with Google
               </button>
-              <button className="w-full flex items-center justify-center p-3 border border-gray-300 rounded-2xl hover:bg-gray-100 transition duration-300">
+              {/* <button className="w-full flex items-center justify-center p-3 border border-gray-300 rounded-2xl hover:bg-gray-100 transition duration-300">
                 <FaFacebook className="mr-2 text-blue-500" /> Sign in with Facebook
-              </button>
+              </button> */}
             </div>
           </div>
         </div>

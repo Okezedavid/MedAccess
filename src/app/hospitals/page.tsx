@@ -241,6 +241,7 @@ const MyHospitals: React.FC = () => {
             </div>
           </div>
         </div>
+        <br />
         <div>
           <Markdown />
         </div>

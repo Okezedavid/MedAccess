@@ -164,7 +164,7 @@ const MyHospitals: React.FC = () => {
                 <input
                   type="search"
                   id="default-search"
-                  className="block w-full p-4 pl-10 text-sm text-Grey/900 border border-Grey/600 rounded-lg bg-gray-50 focus:ring-Primary focus:border-Primary dark:bg-white dark:border-gray-600 dark:placeholder-gray-400  focus:outline-blue-500 "
+                  className="block w-full p-4 pl-10 text-sm text-Grey/900 border border-Grey/600 rounded-lg bg-gray-50   dark:bg-white  dark:placeholder-gray-400  focus:outline-blue-500 "
                   placeholder="Search by city or state"
                   ext-sm
                   required
@@ -241,7 +241,7 @@ const MyHospitals: React.FC = () => {
             </div>
           </div>
         </div>
-        <br />
+        
         <div>
           <Markdown />
         </div>

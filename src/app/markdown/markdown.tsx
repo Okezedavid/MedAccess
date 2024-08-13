@@ -172,7 +172,7 @@ export default function MarkdownEditor() {
           <div className="flex-1 p-2 md:w-1/2 flex flex-col">
             {(markdown || images.length > 0) && (
               <div className="border p-2 rounded shadow-md bg-gray-50 flex-1">
-                <h3 className="text-sm md:text-lg font-medium text-gray-700 mb-2">Preview</h3>
+                <h3 className="text-sm md:text-base font-medium text-gray-700 mb-2">Preview</h3>
                 <div className="preview overflow-auto">
                   <ReactMarkdown remarkPlugins={[remarkGfm]}>
                     {markdown}

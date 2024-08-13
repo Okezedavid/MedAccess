@@ -81,7 +81,7 @@ export default function Account() {
                   <button className="font-serif w-full py-2 mb-3 sm:mb-0 bg-blue-700 text-white rounded-lg hover:bg-blue-600 text-sm md:text-base">Change Password</button>
                 </Link>
                 <Link href="/signin" className="w-full">
-                  <button className="font-serif w-full py-2 bg-gray-900 text-white rounded-lg flex items-center justify-center hover:bg-red-600 text-sm md:text-base">
+                  <button className="font-serif w-full py-2 bg-gray-900 text-white rounded-lg flex items-center justify-center hover:bg-gray-800 text-sm md:text-base">
                     <FaSignOutAlt className="mr-2" />
                     Logout
                   </button>

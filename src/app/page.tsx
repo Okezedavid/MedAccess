@@ -11,9 +11,16 @@ import pic4 from "../assets/imgs/pic4.jpg";
 import logo from "../assets/imgs/logo.png";
 import Image from "next/image";
 import Head from "next/head";
+import Pricing from "./Pricing/pricing"
 
 // Importing icons from Heroicons
-import { MagnifyingGlassIcon, DocumentArrowDownIcon, ShareIcon, PencilSquareIcon } from "@heroicons/react/24/outline";
+import {
+  MagnifyingGlassIcon,
+  DocumentArrowDownIcon,
+  ShareIcon,
+  PencilSquareIcon,
+  ChevronUpIcon, // New icon for "Back to Top"
+} from "@heroicons/react/24/outline";
 
 export default function Home() {
   useEffect(() => {
@@ -23,6 +30,14 @@ export default function Home() {
       once: true,
     });
   }, []);
+
+  // Function to scroll back to the top of the page
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <div className="flex flex-col min-h-screen overflow-hidden">
@@ -48,14 +63,12 @@ export default function Home() {
         </nav>
         <div className="flex flex-col xs:flex-row items-center xs:items-end space-y-2 xs:space-y-0 xs:space-x-2 relative -top-5">
           <Link href="/signin">
-            {" "}
             <button className="text-xs md:text-sm text-blue-900 py-2 px-2">
               Log In
             </button>
           </Link>
 
           <Link href="/signup">
-            {" "}
             <button className="text-xs md:text-sm btn-animated bg-gray-100 text-blue-900 py-2 px-4 relative hover:text-gray-100">
               Register
             </button>
@@ -226,8 +239,7 @@ export default function Home() {
                   Share Hospitals
                 </h2>
                 <p className="text-sm md:text-base text-center">
-                  Share hospital information with friends, family, and
-                  caregivers.
+                  Easily share hospital information with friends and family.
                 </p>
               </div>
               {/* Markdown Support */}
@@ -248,25 +260,39 @@ export default function Home() {
           </div>
         </section>
 
+        {/* New Get Started Button */}
+      <div className="text-center my-8" data-aos="fade-up">
+          <Link href="/signup">
+            <button className="bg-blue-700 text-white font-serif py-3 px-6 rounde hover:bg-blue-600 transition duration-300" data-aos="zoom-out">
+              Get Started for free
+            </button>
+          </Link>
+        </div>
+
+        <div>
+          <Pricing />
+        </div>
+
+<h1 className="flex justify-center text-2xl md:text-4xl font-bold font-mono" data-aos="zoom-out-left">Extra <span className="text-blue-700 px-3">Services</span></h1>
         {/* Three */}
         <section id="three" className="wrapper py-16" data-aos="fade-up">
-          <div className="inner flex flex-col md:flex-row md:justify-between">
+          <div className="inner flex flex-col md:flex-row md:justify-between gap-8">
             <div
-              className="flex-item box mb-8 md:mb-0 md:mr-8"
+              className="flex-item box mb-8 md:mb-0"
               data-aos="fade-right"
             >
               <div className="image fit mb-4">
                 <Image
                   src={pic1}
                   alt=""
-                  width={317}
+                  width={350}
                   height={200}
-                  className="rounded"
+                  className="rounded object-cover w-full h-[200px]"
                 />
               </div>
-              <div className="content">
+              <div className="content text-center">
                 <h3 className="text-lg md:text-xl font-bold font-mono">
-                  Healing starts here
+                 Proper Medical Attention
                 </h3>
                 <p className="text-sm">
                   We provide facilities, resources and care to empower patients
@@ -275,19 +301,19 @@ export default function Home() {
               </div>
             </div>
             <div
-              className="flex-item box mb-8 md:mb-0 md:mx-8"
+              className="flex-item box mb-8 md:mb-0"
               data-aos="fade-left"
             >
               <div className="image fit mb-4">
                 <Image
                   src={pic3}
                   alt=""
-                  width={317}
+                  width={350}
                   height={200}
-                  className="rounded"
+                  className="rounded object-cover w-full h-[200px]"
                 />
               </div>
-              <div className="content">
+              <div className="content text-center">
                 <h3 className="text-lg md:text-xl font-bold font-mono">
                   Free Consultation
                 </h3>
@@ -297,17 +323,17 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="flex-item box md:ml-8" data-aos="fade-right">
+            <div className="flex-item box" data-aos="fade-right">
               <div className="image fit mb-4">
                 <Image
                   src={pic4}
                   alt=""
-                  width={317}
+                  width={350}
                   height={200}
-                  className="rounded"
+                  className="rounded object-cover w-full h-[200px]"
                 />
               </div>
-              <div className="content">
+              <div className="content text-center">
                 <h3 className="text-lg md:text-xl font-bold font-mono">
                   Accessibility
                 </h3>
@@ -321,6 +347,15 @@ export default function Home() {
         </section>
       </main>
       <Footer />
+
+      {/* Back to Top Button */}
+      <button
+        onClick={scrollToTop}
+        className="fixed bottom-5 right-5 p-3 rounded-full bg-blue-900 text-white hover:bg-blue-700 shadow-lg transition-all duration-300"
+        aria-label="Scroll to top"
+      >
+        <ChevronUpIcon className="w-4 h-4" />
+      </button>
     </div>
   );
 }

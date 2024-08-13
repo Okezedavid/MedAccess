@@ -165,7 +165,7 @@ export default function MarkdownEditor() {
               onChange={handleInputChange}
               placeholder="Write your markdown here..."
               rows={10}
-              className="w-full p-2 border rounded focus:outline-blue-500 flex-1"
+              className="w-full p-2 border rounded focus:outline-none flex-1"
             />
           </div>
 

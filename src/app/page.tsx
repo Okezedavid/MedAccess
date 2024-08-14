@@ -11,7 +11,7 @@ import pic4 from "../assets/imgs/pic4.jpg";
 import logo from "../assets/imgs/logo.png";
 import Image from "next/image";
 import Head from "next/head";
-import Pricing from "./Pricing/pricing"
+import Pricing from "./Pricing/pricing";
 
 // Importing icons from Heroicons
 import {
@@ -261,9 +261,12 @@ export default function Home() {
         </section>
 
         {/* New Get Started Button */}
-      <div className="text-center my-8" data-aos="fade-up">
+        <div className="text-center my-8" data-aos="fade-up">
           <Link href="/signup">
-            <button className="bg-blue-700 text-white font-serif py-3 px-6 rounde hover:bg-blue-600 transition duration-300" data-aos="zoom-out">
+            <button
+              className="bg-blue-700 text-white font-serif py-3 px-6 rounde hover:bg-blue-600 transition duration-300"
+              data-aos="zoom-out"
+            >
               Get Started for free
             </button>
           </Link>
@@ -273,14 +276,16 @@ export default function Home() {
           <Pricing />
         </div>
 
-<h1 className="flex justify-center text-2xl md:text-4xl font-bold font-mono" data-aos="zoom-out-left">Extra <span className="text-blue-700 px-3">Services</span></h1>
+        <h1
+          className="flex justify-center text-2xl md:text-4xl font-bold font-mono"
+          data-aos="zoom-out-left"
+        >
+          Extra <span className="text-blue-700 px-3">Services</span>
+        </h1>
         {/* Three */}
         <section id="three" className="wrapper py-16" data-aos="fade-up">
           <div className="inner flex flex-col md:flex-row md:justify-between gap-8">
-            <div
-              className="flex-item box mb-8 md:mb-0"
-              data-aos="fade-right"
-            >
+            <div className="flex-item box mb-8 md:mb-0" data-aos="fade-right">
               <div className="image fit mb-4">
                 <Image
                   src={pic1}
@@ -292,7 +297,7 @@ export default function Home() {
               </div>
               <div className="content text-center">
                 <h3 className="text-lg md:text-xl font-bold font-mono">
-                 Proper Medical Attention
+                  Proper Medical Attention
                 </h3>
                 <p className="text-sm">
                   We provide facilities, resources and care to empower patients
@@ -300,10 +305,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div
-              className="flex-item box mb-8 md:mb-0"
-              data-aos="fade-left"
-            >
+            <div className="flex-item box mb-8 md:mb-0" data-aos="fade-left">
               <div className="image fit mb-4">
                 <Image
                   src={pic3}
@@ -351,7 +353,7 @@ export default function Home() {
       {/* Back to Top Button */}
       <button
         onClick={scrollToTop}
-        className="fixed bottom-5 right-5 p-3 rounded-full bg-blue-900 text-white hover:bg-blue-700 shadow-lg transition-all duration-300"
+        className="fixed bottom-5 right-5 p-3 rounded-full bg-blue-900 text-white shadow-lg transition-all duration-300"
         aria-label="Scroll to top"
       >
         <ChevronUpIcon className="w-4 h-4" />

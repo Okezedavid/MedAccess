@@ -214,22 +214,27 @@ const MyHospitals: React.FC = () => {
                   Prev
                 </button>
               )}
-              {pageNumbers.map(
-                (number) =>
-                  number <= totalPages && (
-                    <button
-                      key={number}
-                      className={`py-2 px-4 rounded-md text-sm font-sans ${
-                        number === currentPage
-                          ? "bg-blue-500 text-white"
-                          : "bg-gray-300 hover:bg-gray-400"
-                      }`}
-                      onClick={() => setCurrentPage(number)}
-                    >
-                      {number}
-                    </button>
-                  )
-              )}
+              <button
+                className={`py-2 px-4 rounded-md text-sm font-sans ${
+                  currentPage === 1
+                    ? "bg-blue-500 text-white"
+                    : "bg-gray-300 hover:bg-gray-400"
+                }`}
+                onClick={() => handlePageChange(currentPage)}
+              >
+                {currentPage}
+              </button>
+              <button
+                className={`py-2 px-4 rounded-md text-sm font-sans ${
+                  currentPage + 1 <= totalPages
+                    ? "bg-gray-300 hover:bg-gray-400"
+                    : "bg-gray-300 text-gray-400 cursor-not-allowed"
+                }`}
+                onClick={() => handlePageChange(currentPage + 1)}
+                disabled={currentPage + 1 > totalPages}
+              >
+                {currentPage + 1}
+              </button>
               {showNext && (
                 <button
                   className="bg-gray-300 py-2 px-4 rounded-md text-xs md:text-sm font-sans hover:bg-gray-400"
@@ -241,7 +246,7 @@ const MyHospitals: React.FC = () => {
             </div>
           </div>
         </div>
-        
+
         <div>
           <Markdown />
         </div>

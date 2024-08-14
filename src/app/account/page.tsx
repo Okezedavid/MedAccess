@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import { FaSignOutAlt } from 'react-icons/fa';
 import Link from 'next/link';
-import Image from 'next/image';
 import { auth } from '../../firebaseConfig';
 import Navbar from "../Dashboard/page";
 
@@ -13,7 +12,8 @@ interface User {
 
 export default function Account() {
   const [user, setUser] = useState<User | null>(null);
-  const [isLoading, setIsLoading] = useState(true); // New state for loading
+  const [isLoading, setIsLoading] = useState(true); 
+  const [showModal, setShowModal] = useState(false); 
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((currentUser) => {
@@ -32,6 +32,23 @@ export default function Account() {
     return () => unsubscribe();
   }, []);
 
+  const handleLogout = () => {
+    setShowModal(true);
+  };
+
+  const confirmLogout = () => {
+    auth.signOut().then(() => {
+      // Redirect to sign-in page
+      window.location.href = "/signin";
+    }).catch((error) => {
+      console.error('Logout Error:', error);
+    });
+  };
+
+  const cancelLogout = () => {
+    setShowModal(false);
+  };
+
   return (
     <div>
       <nav>
@@ -40,7 +57,6 @@ export default function Account() {
       <div className="container mx-auto p-4 flex flex-col items-center justify-center h-screen relative -top-20">
         <div className="bg-blue-900 text-white rounded-lg shadow-lg p-8 w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl">
           {isLoading ? (
-            // Skeleton Loader
             <div className="flex flex-col items-center space-y-4 animate-pulse">
               <div className="h-6 bg-gray-700 rounded w-1/3"></div>
               <div className="text-left w-full space-y-2">
@@ -59,7 +75,6 @@ export default function Account() {
               </div>
             </div>
           ) : (
-            // Actual Content
             <div className="flex flex-col items-center space-y-4">
               {user && (
                 <>
@@ -80,17 +95,27 @@ export default function Account() {
                 <Link href="/resetpassword" className="w-full">
                   <button className="font-serif w-full py-2 mb-3 sm:mb-0 bg-blue-700 text-white rounded-lg hover:bg-blue-600 text-sm md:text-base">Change Password</button>
                 </Link>
-                <Link href="/signin" className="w-full">
-                  <button className="font-serif w-full py-2 bg-gray-900 text-white rounded-lg flex items-center justify-center hover:bg-gray-800 text-sm md:text-base">
-                    <FaSignOutAlt className="mr-2" />
-                    Logout
-                  </button>
-                </Link>
+                <button onClick={handleLogout} className="font-serif w-full py-2 bg-gray-900 text-white rounded-lg flex items-center justify-center hover:bg-gray-800 text-sm md:text-base">
+                  <FaSignOutAlt className="mr-2" />
+                  Logout
+                </button>
               </div>
             </div>
           )}
         </div>
       </div>
+
+      {showModal && (
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+          <div className="bg-white rounded-3xl shadow-lg p-6 w-96">
+            <h3 className="text-base font-semibold mb-4">Are you sure you want to log out?</h3>
+            <div className="flex justify-end space-x-4">
+              <button onClick={cancelLogout} className="py-2 px-4 bg-gray-300 rounded-lg hover:bg-gray-400">Cancel</button>
+              <button onClick={confirmLogout} className="py-2 px-4 bg-blue-900 text-white rounded-lg hover:bg-blue-800">yes</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

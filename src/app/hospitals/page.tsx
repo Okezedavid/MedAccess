@@ -1,17 +1,21 @@
 "use client";
 import React, { useEffect, useState } from "react";
+// Icons that handles the export and share function 
+import { HiOutlineShare, HiOutlineDownload } from "react-icons/hi"; 
 import HospitalList from "../hospitalList/hospitalList";
 import Markdown from "../markdown/markdown";
 import Dashboard from "../Dashboard/page";
 
 // FOR THE SKELETON LOADING
 const SkeletonCard: React.FC = () => (
-  <div className="max-w-sm w-full p-4 bg-gray-200 animate-pulse border border-gray-200 rounded-lg shadow hover:bg-gray-100 md:flex md:max-w-full md:justify-between md:p-6">
-    <div className="h-8 bg-gray-300 rounded mb-2 md:mb-0 md:mr-4 w-full"></div>
-    <div className="h-4 bg-gray-300 rounded mb-2 md:mb-0 md:mr-4 w-full"></div>
-    <div className="h-4 bg-gray-300 rounded w-full"></div>
+  <div className="w-full p-20 grid gap-8 mb-4 grid-flow-col bg-gray-500  animate-pulse border border-gray-200 rounded-lg shadow md:flex md:max-w-full md:justify-between md:p-14">
+    <div className="h-8 bg-gray-400 rounded w-full"></div>
+    <div className="h-4 bg-gray-400 rounded w-full"></div>
+    <div className="h-4 bg-gray-400 rounded w-full"></div>
   </div>
 );
+
+
 
 const MyHospitals: React.FC = () => {
   const [providers, setProviders] = useState<any[]>([]);
@@ -99,10 +103,10 @@ const MyHospitals: React.FC = () => {
     if (!data.length) return;
 
     // Convert JSON data to CSV
-    const headers = ["Name", "Address", "Phone"]; // Adjust based on the properties you want
+    const headers = ["Name", "Address", "Phone"]; 
     const rows = data.map((item) =>
       [item.name, item.address, item.phone].join(",")
-    ); // Adjust based on your data structure
+    ); 
     const csvContent = `data:text/csv;charset=utf-8,${[
       headers.join(","),
       ...rows,
@@ -115,7 +119,7 @@ const MyHospitals: React.FC = () => {
     link.setAttribute("download", "hospitals.csv");
     document.body.appendChild(link); // Required for FF
     link.click();
-    document.body.removeChild(link); // Clean up
+    document.body.removeChild(link); 
   };
 
   const handleExport = () => {
@@ -176,7 +180,7 @@ const MyHospitals: React.FC = () => {
             {isLoading && (
               <p className="text-center text-gray-700">Please wait!!</p>
             )}
-            <div className="grid grid-row-4 grid-cols-4 gap-12">
+            <div className=" md:flex grid-cols-4  md:gap-4">
               {isLoading
                 ? Array.from({ length: 4 }).map((_, index) => (
                     <SkeletonCard key={index} />
@@ -192,16 +196,18 @@ const MyHospitals: React.FC = () => {
               </p>
               <div className="flex gap-4">
                 <button
-                  className="bg-blue-500 py-2 px-2 rounded-md text-sm font-sans hover:bg-blue-400"
-                  onClick={handleShare}
+                  className="text-blue-500 text-2xl hover:text-blue-600"
+                  onClick={handleExport}
+                  aria-label="Export"
                 >
-                  Share
+                  <HiOutlineDownload />
                 </button>
                 <button
-                  className="bg-green-500 py-2 px-2 rounded-md text-xs font-sans hover:bg-green-400"
-                  onClick={handleExport}
+                  className="text-blue-500 text-2xl hover:text-blue-600"
+                  onClick={handleShare}
+                  aria-label="Share"
                 >
-                  Export CSV
+                  <HiOutlineShare />
                 </button>
               </div>
             </div>
@@ -227,11 +233,10 @@ const MyHospitals: React.FC = () => {
               <button
                 className={`py-2 px-4 rounded-md text-sm font-sans ${
                   currentPage + 1 <= totalPages
-                    ? "bg-gray-300 hover:bg-gray-400"
-                    : "bg-gray-300 text-gray-400 cursor-not-allowed"
+                    ? "bg-blue-500 text-white"
+                    : "bg-gray-300 hover:bg-gray-400"
                 }`}
                 onClick={() => handlePageChange(currentPage + 1)}
-                disabled={currentPage + 1 > totalPages}
               >
                 {currentPage + 1}
               </button>
@@ -246,8 +251,7 @@ const MyHospitals: React.FC = () => {
             </div>
           </div>
         </div>
-
-        <div>
+        <div className="container box-border h-auto w-3/4 pb-4 m-auto rounded-lg">
           <Markdown />
         </div>
       </section>

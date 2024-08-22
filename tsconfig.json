@@ -12,7 +12,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "types": ["@types/jest", "@testing-library/jest-dom"],
+    "types": ["@types/jest", "@testing-library/jest-dom","vitest/globals"],
     "plugins": [
       {
         "name": "next"

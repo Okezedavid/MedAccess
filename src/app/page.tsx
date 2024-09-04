@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Footer from "../app/Footer/page";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import pic1 from "../assets/imgs/pic1.jpg";
@@ -22,13 +22,31 @@ import {
   ChevronUpIcon, // New icon for "Back to Top"
 } from "@heroicons/react/24/outline";
 
+
 export default function Home() {
+  const [showScrollButton, setShowScrollButton] = useState(false);
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
       easing: "ease-in-out",
       once: true,
     });
+
+    // Scroll event listener to toggle visibility of the "Scroll to Top" button
+    const handleScroll = () => {
+      if (window.scrollY > 200) {
+        setShowScrollButton(true);
+      } else {
+        setShowScrollButton(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   // Function to scroll back to the top of the page
@@ -61,7 +79,17 @@ export default function Home() {
             MedAccess
           </h1>
         </nav>
-        <div className="flex flex-col xs:flex-row items-center xs:items-end space-y-2 xs:space-y-0 xs:space-x-2 relative -top-5">
+        <div className="text-center relative -top-4" data-aos="fade-up">
+          <Link href="/signup">
+            <button
+              className="bg-blue-700 text-xs md:text-sm text-white font-serif py-3 px-4  hover:bg-blue-800 transition duration-300"
+              data-aos="zoom-out"
+            >
+              Get Started
+            </button>
+          </Link>
+        </div>
+        {/* <div className="flex flex-col xs:flex-row items-center xs:items-end space-y-2 xs:space-y-0 xs:space-x-2 relative -top-5">
           <Link href="/signin">
             <button className="text-xs md:text-sm text-blue-900 py-2 px-2">
               Log In
@@ -73,7 +101,7 @@ export default function Home() {
               Register
             </button>
           </Link>
-        </div>
+        </div> */}
       </header>
 
       <main className="flex-grow flex flex-col items-center justify-between p-6 md:p-24">

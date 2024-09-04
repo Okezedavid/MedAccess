@@ -9,6 +9,7 @@ export default function Footer() {
               type="email"
               placeholder="Enter your email"
               className="w-full px-4 py-2 rounded-l-3xl bg-gray-800 text-white placeholder-gray-400 focus:outline-none placeholder:text-sm"
+              required
             />
             <button className="px-2 py-4 md:py-5 bg-blue-900 text-sm text-white rounded-r-3xl hover:bg-blue-700 focus:outline-none">
               Subscribe

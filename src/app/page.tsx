@@ -80,12 +80,12 @@ export default function Home() {
           </h1>
         </nav>
         <div className="text-center relative -top-4" data-aos="fade-up">
-          <Link href="/signup">
+          <Link href="/signin">
             <button
               className="bg-blue-700 text-xs md:text-sm text-white font-serif py-3 px-4  hover:bg-blue-800 transition duration-300"
               data-aos="zoom-out"
             >
-              Get Started
+              Login
             </button>
           </Link>
         </div>
